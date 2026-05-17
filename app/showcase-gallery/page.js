@@ -141,13 +141,13 @@ const EVENT_CATEGORIES = [
 // ── Plans ─────────────────────────────────────────────────────────────────────
 const PLANS = [
   {
-    name: "Basic",
-    price: "₹100",
+    name: "Starter",
+    price: "₹999",
     period: "/ month",
-    tagline: "Perfect for small events",
-    uploadLimit: "500 photos",
+    tagline: "For individual photographers",
+    uploadLimit: "1,500 photos",
     features: [
-      "500 photos / month",
+      "1,500 photos / month",
       "AI face matching",
       "Private guest galleries",
       "QR registration",
@@ -160,12 +160,12 @@ const PLANS = [
   },
   {
     name: "Pro",
-    price: "₹999",
+    price: "₹2,999",
     period: "/ month",
     tagline: "For growing studios",
-    uploadLimit: "2,000 photos",
+    uploadLimit: "6,000 photos",
     features: [
-      "2,000 photos / month",
+      "6,000 photos / month",
       "AI face matching",
       "Private guest galleries",
       "QR registration",
@@ -179,13 +179,13 @@ const PLANS = [
     badge: "Most Popular",
   },
   {
-    name: "Premium",
-    price: "₹2,499",
+    name: "Studio",
+    price: "₹7,999",
     period: "/ month",
     tagline: "For large-scale events",
-    uploadLimit: "10,000 photos",
+    uploadLimit: "20,000 photos",
     features: [
-      "10,000 photos / month",
+      "20,000 photos / month",
       "AI face matching",
       "Private guest galleries",
       "QR registration",
@@ -196,7 +196,7 @@ const PLANS = [
       "Multi-event management",
       "SLA-backed response",
     ],
-    cta: "Go Premium",
+    cta: "Go Studio",
     highlight: true,
     badge: "Best Value",
   },

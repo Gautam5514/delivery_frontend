@@ -50,10 +50,10 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center lg:gap-12">
 
           {/* Steps selector */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {steps.map((step, index) => {
               const isActive = index === activeStep;
               const Icon = step.icon;
@@ -62,7 +62,7 @@ export default function HowItWorksSection() {
                   key={step.id}
                   onClick={() => setActiveStep(index)}
                   className={`
-                    cursor-pointer p-6 rounded-xl border transition-all duration-300
+                    cursor-pointer p-4 rounded-xl border transition-all duration-300 sm:p-6
                     ${isActive
                       ? 'border-zinc-300 bg-zinc-100 shadow-[0_0_30px_-10px_rgba(255,255,255,0.08)]'
                       : 'border-zinc-200 bg-white hover:bg-zinc-50'
@@ -71,13 +71,13 @@ export default function HowItWorksSection() {
                 >
                   <div className="flex items-start gap-4">
                     <div className={`
-                      flex shrink-0 h-12 w-12 items-center justify-center rounded-2xl transition-colors
+                      flex shrink-0 h-10 w-10 items-center justify-center rounded-2xl transition-colors sm:h-12 sm:w-12
                       ${isActive ? 'bg-zinc-900 text-white shadow-lg shadow-zinc-300/50' : 'bg-zinc-100 text-zinc-600'}
                     `}>
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                     </div>
                     <div>
-                      <h3 className={`text-xl font-semibold mb-2 transition-colors ${isActive ? 'text-zinc-900' : 'text-zinc-600'}`}>
+                      <h3 className={`text-base font-semibold mb-1.5 transition-colors sm:text-xl sm:mb-2 ${isActive ? 'text-zinc-900' : 'text-zinc-600'}`}>
                         {step.id}. {step.title}
                       </h3>
                       <AnimatePresence>
@@ -100,7 +100,7 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Image Display */}
-          <div className="relative aspect-square md:aspect-[4/3] w-full rounded-xl overflow-hidden border border-zinc-200 shadow-xl bg-white">
+          <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-zinc-200 shadow-xl bg-white sm:aspect-square md:aspect-[4/3]">
             {/* Soft inner glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-zinc-200/60 to-transparent z-10 pointer-events-none mix-blend-screen" />
 

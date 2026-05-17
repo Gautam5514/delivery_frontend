@@ -82,50 +82,77 @@ export default function EventsPage() {
             No events found.
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-200 bg-zinc-50">
-                <tr>
-                  <th className="px-4 py-3 font-medium text-zinc-600">Event Name</th>
-                  <th className="px-4 py-3 font-medium text-zinc-600">Code</th>
-                  <th className="px-4 py-3 font-medium text-zinc-600">Guests</th>
-                  <th className="px-4 py-3 font-medium text-zinc-600">Photos</th>
-                  <th className="px-4 py-3 font-medium tracking-tight text-zinc-600">
-                    Date Created
-                  </th>
-                  <th className="px-4 py-3 text-right font-medium text-zinc-600">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200">
-                {filteredEvents.map((event) => (
-                  <tr key={event._id} className="transition hover:bg-zinc-50">
-                    <td className="px-4 py-3 font-medium">{event.name}</td>
-                    <td className="px-4 py-3">
-                      <span className="flex max-w-fit items-center gap-1 rounded-md bg-zinc-100 px-2 py-1 font-mono text-xs text-zinc-700">
-                        <QrCode className="h-3 w-3 text-zinc-600" />
-                        {event.code}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">{event.guestCount || 0}</td>
-                    <td className="px-4 py-3">{event.photoCount || 0}</td>
-                    <td className="px-4 py-3 text-zinc-500">
-                      {new Date(event.createdAt).toLocaleDateString()}
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <Link
-                        href={`/admin/events/${event._id}`}
-                        className="inline-block rounded border border-zinc-900 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-black"
-                      >
-                        View Details
-                      </Link>
-                    </td>
+          <>
+            {/* Mobile card list (hidden sm+) */}
+            <div className="divide-y divide-zinc-200 sm:hidden">
+              {filteredEvents.map((event) => (
+                <div key={event._id} className="flex items-start justify-between gap-3 p-4">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-zinc-900 truncate">{event.name}</p>
+                    <span className="mt-1 inline-flex items-center gap-1 rounded-md bg-zinc-100 px-2 py-0.5 font-mono text-xs text-zinc-700">
+                      <QrCode className="h-3 w-3 text-zinc-600" />
+                      {event.code}
+                    </span>
+                    <p className="mt-1.5 text-xs text-zinc-400">
+                      {event.guestCount || 0} guests · {event.photoCount || 0} photos · {new Date(event.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <Link
+                    href={`/admin/events/${event._id}`}
+                    className="shrink-0 rounded border border-zinc-900 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-black"
+                  >
+                    View
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table (hidden on mobile) */}
+            <div className="hidden overflow-x-auto sm:block">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-zinc-200 bg-zinc-50">
+                  <tr>
+                    <th className="px-4 py-3 font-medium text-zinc-600">Event Name</th>
+                    <th className="px-4 py-3 font-medium text-zinc-600">Code</th>
+                    <th className="px-4 py-3 font-medium text-zinc-600">Guests</th>
+                    <th className="px-4 py-3 font-medium text-zinc-600">Photos</th>
+                    <th className="px-4 py-3 font-medium tracking-tight text-zinc-600">
+                      Date Created
+                    </th>
+                    <th className="px-4 py-3 text-right font-medium text-zinc-600">
+                      Action
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-zinc-200">
+                  {filteredEvents.map((event) => (
+                    <tr key={event._id} className="transition hover:bg-zinc-50">
+                      <td className="px-4 py-3 font-medium">{event.name}</td>
+                      <td className="px-4 py-3">
+                        <span className="flex max-w-fit items-center gap-1 rounded-md bg-zinc-100 px-2 py-1 font-mono text-xs text-zinc-700">
+                          <QrCode className="h-3 w-3 text-zinc-600" />
+                          {event.code}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">{event.guestCount || 0}</td>
+                      <td className="px-4 py-3">{event.photoCount || 0}</td>
+                      <td className="px-4 py-3 text-zinc-500">
+                        {new Date(event.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <Link
+                          href={`/admin/events/${event._id}`}
+                          className="inline-block rounded border border-zinc-900 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-black"
+                        >
+                          View Details
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
 

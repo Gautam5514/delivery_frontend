@@ -174,7 +174,7 @@ function SelfiePanel({ image, imagePreview, isCameraActive, consentGiven, videoR
               </div>
               <label className={`flex cursor-pointer items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${consentGiven ? "text-zinc-400 hover:bg-white/5 hover:text-white" : "cursor-not-allowed opacity-40 text-zinc-600"}`}>
                 <UploadCloud className="h-4 w-4" /> Upload Photo
-                <input type="file" accept="image/*" capture="user" className="hidden" disabled={!consentGiven} onChange={onFileSelect} />
+                <input type="file" accept="image/*" className="hidden" disabled={!consentGiven} onChange={onFileSelect} />
               </label>
             </motion.div>
           )}
@@ -220,6 +220,28 @@ function RegisterPageInner() {
 
   const showError = (msg) => { setError(msg); toast.error(msg); };
 
+  const waitForVideoElement = () =>
+    new Promise((resolve, reject) => {
+      let attempts = 0;
+
+      const check = () => {
+        if (videoRef.current) {
+          resolve(videoRef.current);
+          return;
+        }
+
+        attempts += 1;
+        if (attempts > 20) {
+          reject(new Error("Camera view not ready"));
+          return;
+        }
+
+        requestAnimationFrame(check);
+      };
+
+      check();
+    });
+
   // Auto-show the biometric consent notice on first render.
   // DPDP 2023 and GDPR require "prominent" disclosure before collecting
   // face data — waiting for the user to notice the checkbox is not enough.
@@ -239,7 +261,11 @@ function RegisterPageInner() {
 
   const startCamera = async () => {
     if (!consentGiven) { showError("Accept the privacy notice before using the camera."); return; }
-    if (!navigator.mediaDevices?.getUserMedia) { showError("Camera API not supported."); return; }
+    if (!window.isSecureContext) {
+      showError("Camera requires HTTPS. Open this link on HTTPS or use the Upload Photo option.");
+      return;
+    }
+    if (!navigator.mediaDevices?.getUserMedia) { showError("Camera API not supported on this browser."); return; }
     try {
       let stream;
       try {
@@ -247,16 +273,22 @@ function RegisterPageInner() {
       } catch {
         stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
       }
-      if (!videoRef.current) throw new Error("Camera view not ready");
-      videoRef.current.srcObject = stream;
-      await videoRef.current.play();
       streamRef.current = stream;
       setIsCameraActive(true);
+      const video = await waitForVideoElement();
+      video.srcObject = stream;
+      await video.play();
       setError("");
     } catch (err) {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((t) => t.stop());
+        streamRef.current = null;
+      }
+      setIsCameraActive(false);
       if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") { showError("Camera permission denied."); return; }
       if (err.name === "NotFoundError") { showError("No camera found on this device."); return; }
       if (err.name === "NotReadableError") { showError("Camera is busy in another app."); return; }
+      if (err.name === "NotSecureError" || err.name === "SecurityError") { showError("Camera requires HTTPS. Open this link on HTTPS or use the Upload Photo option."); return; }
       showError("Could not access camera. Check device settings.");
     }
   };

@@ -88,14 +88,14 @@ export default function HeroSection() {
         <ChevronRight className="h-6 w-6" />
       </button>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-4 pt-16 pb-16 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-4 pt-20 pb-16 sm:px-6 sm:pt-16 lg:px-8">
         <div className="w-full md:ml-auto md:max-w-xl lg:max-w-2xl">
           <motion.h1
             key={heroSlides[activeSlide].title}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="text-5xl font-semibold tracking-tight text-zinc-900 sm:text-6xl md:text-7xl"
+            className="text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl lg:text-7xl"
           >
             {heroSlides[activeSlide].title}
           </motion.h1>
@@ -112,7 +112,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="mt-8 max-w-xl text-base leading-8 text-zinc-700 sm:text-lg"
+            className="mt-6 max-w-xl text-sm leading-7 text-zinc-700 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg"
           >
             {heroSlides[activeSlide].description}
           </motion.p>

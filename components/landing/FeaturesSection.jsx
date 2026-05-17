@@ -8,10 +8,10 @@ export default function FeaturesSection() {
     <section id="features" className="relative py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-2xl font-bold tracking-tight mb-4 sm:text-3xl md:text-5xl">
             Everything you need. Nothing you don't.
           </h2>
-          <p className="text-lg text-zinc-600">
+          <p className="text-base text-zinc-600 sm:text-lg">
             A premium photo delivery experience backed by powerful technology.
           </p>
         </div>

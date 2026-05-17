@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
-  ArrowUpRight,
   CheckCircle2,
   CreditCard,
   Loader2,
@@ -60,7 +59,7 @@ const PLAN_META = {
   },
   premium: {
     icon: Sparkles,
-    tag: "Flagship",
+    tag: "Best Value",
     tagColor: "border-white/20 bg-white/10 text-white",
     dark: true,
     recommended: false,

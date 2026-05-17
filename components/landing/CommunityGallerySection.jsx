@@ -78,6 +78,58 @@ const floatingCards = [
   },
 ];
 
+function MiniCard({ card, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.07 }}
+      className="w-52 shrink-0 snap-start sm:w-56"
+    >
+      <div
+        className="rounded-2xl p-[1.5px]"
+        style={{
+          background: `linear-gradient(135deg, ${card.neon}90, transparent 50%, ${card.neon}50)`,
+        }}
+      >
+        <div
+          className="rounded-2xl bg-white p-3"
+          style={{
+            boxShadow: `0 0 20px ${card.glow}, 0 16px 40px rgba(30,40,80,0.12)`,
+          }}
+        >
+          <div className="relative overflow-hidden rounded-xl">
+            <Image
+              src={card.image}
+              alt={card.caption}
+              width={400}
+              height={160}
+              className="h-28 w-full rounded-xl object-cover"
+            />
+            <div
+              className="absolute inset-x-0 top-0 h-[2px]"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${card.neon}, transparent)`,
+                opacity: 0.8,
+              }}
+            />
+          </div>
+          <div className="mt-2.5 flex items-center justify-center gap-1.5">
+            <span
+              className="inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ backgroundColor: card.neon }}
+            />
+            <p className="text-center text-[11px] font-semibold leading-5 text-zinc-700">
+              {card.caption}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function CommunityGallerySection() {
   return (
     <section className="relative z-10 px-4 pb-16 sm:px-6 lg:px-8">
@@ -93,14 +145,27 @@ export default function CommunityGallerySection() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-600">
             Join Our Community
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-4xl md:text-5xl">
             Create your own AI-powered Photo Galleries
           </h2>
           <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-zinc-700" />
         </motion.div>
 
-        {/* Card arena — light futuristic */}
-        <div className="relative mt-16 min-h-[560px] overflow-hidden rounded-2xl bg-[#eff1f5] px-3 py-8 sm:px-6">
+        {/* ── Mobile: horizontal scroll strip (hidden on md+) ── */}
+        <div className="mt-10 md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {floatingCards.map((card, index) => (
+              <MiniCard key={card.caption} card={card} index={index} />
+            ))}
+          </div>
+          {/* Fade hint at right edge */}
+          <div className="pointer-events-none relative -mt-16 flex justify-end pr-0">
+            <div className="h-16 w-16 bg-gradient-to-l from-white to-transparent" />
+          </div>
+        </div>
+
+        {/* ── Desktop: floating card arena (hidden on mobile) ── */}
+        <div className="relative mt-16 hidden min-h-[560px] overflow-hidden rounded-2xl bg-[#eff1f5] px-3 py-8 md:block sm:px-6">
 
           {/* Subtle dot grid */}
           <div
@@ -153,7 +218,7 @@ export default function CommunityGallerySection() {
             }}
           />
 
-          {/* Cards — staggered one-by-one entry + continuous float */}
+          {/* Floating cards — staggered entry + continuous float */}
           {floatingCards.map((card, index) => (
             <motion.div
               key={card.caption}
@@ -167,7 +232,6 @@ export default function CommunityGallerySection() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              {/* Float wrapper */}
               <motion.div
                 animate={{ y: [0, card.floatAmount, 0] }}
                 transition={{
@@ -177,21 +241,18 @@ export default function CommunityGallerySection() {
                   delay: index * 0.4,
                 }}
               >
-                {/* Gradient border ring */}
                 <div
                   className="rounded-2xl p-[1.5px]"
                   style={{
                     background: `linear-gradient(135deg, ${card.neon}90, transparent 50%, ${card.neon}50)`,
                   }}
                 >
-                  {/* White card body */}
                   <div
                     className="rounded-2xl bg-white p-3"
                     style={{
                       boxShadow: `0 0 20px ${card.glow}, 0 16px 40px rgba(30,40,80,0.12)`,
                     }}
                   >
-                    {/* Image */}
                     <div className="relative overflow-hidden rounded-xl">
                       <Image
                         src={card.image}
@@ -200,7 +261,6 @@ export default function CommunityGallerySection() {
                         height={160}
                         className="h-28 w-full rounded-xl object-cover sm:h-32 md:h-36"
                       />
-                      {/* Neon top accent line */}
                       <div
                         className="absolute inset-x-0 top-0 h-[2px]"
                         style={{
@@ -210,7 +270,6 @@ export default function CommunityGallerySection() {
                       />
                     </div>
 
-                    {/* Caption with pulsing status dot */}
                     <div className="mt-2.5 flex items-center justify-center gap-1.5">
                       <motion.span
                         animate={{ opacity: [1, 0.2, 1] }}
@@ -234,7 +293,7 @@ export default function CommunityGallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.45 }}
-          className="mx-auto mt-12 max-w-4xl text-center text-xl leading-9 text-zinc-700"
+          className="mx-auto mt-10 max-w-4xl text-center text-lg leading-8 text-zinc-700 md:mt-12 md:text-xl md:leading-9"
         >
           Create groups for every occasion and let face recognition organize
           everyone&apos;s moments into one smart, elegant photo experience.

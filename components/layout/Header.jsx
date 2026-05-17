@@ -21,7 +21,7 @@ import CreateEventModal from "@/components/admin/CreateEventModal";
 
 const planMeta = {
   basic: {
-    label: "Basic Plan",
+    label: "Starter Plan",
     icon: Layers,
     wrapper:
       "bg-white/85 border-zinc-200/80 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_15px_-3px_rgba(0,0,0,0.08)] hover:border-zinc-300 backdrop-blur-md",
@@ -33,7 +33,7 @@ const planMeta = {
     glow: "",
   },
   medium: {
-    label: "Medium Plan",
+    label: "Pro Plan",
     icon: Zap,
     wrapper:
       "bg-gradient-to-r from-blue-50/90 to-indigo-50/90 border-blue-200/60 shadow-[0_4px_20px_-5px_rgba(59,130,246,0.15)] hover:shadow-[0_8px_25px_-5px_rgba(59,130,246,0.25)] hover:border-blue-300/80 backdrop-blur-md",
@@ -45,7 +45,7 @@ const planMeta = {
     glow: "",
   },
   premium: {
-    label: "Premium Plan",
+    label: "Studio Plan",
     icon: Crown,
     wrapper:
       "group relative overflow-hidden bg-gradient-to-r from-zinc-900 via-zinc-800 to-black border-yellow-500/30 shadow-[0_4px_20px_-5px_rgba(234,179,8,0.2)] hover:shadow-[0_8px_30px_-5px_rgba(234,179,8,0.3)] hover:border-yellow-500/50",

@@ -32,7 +32,7 @@ const testimonials = [
   {
     name: "Mark Robinson",
     role: "Corporate Host",
-    content: "We used Kwikpic for our annual tech summit. Distributing 5,000+ photos to 800 attendees used to take weeks. With this, it was done before the closing keynote.",
+    content: "We used Gopo for our annual tech summit. Distributing 5,000+ photos to 800 attendees used to take weeks. With this, it was done before the closing keynote.",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
   },
   {
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
         </h2>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
           From intimate events to massive corporate events, see why people trust
-          Kwikpic to deliver their memories.
+          Gopo to deliver their memories.
         </p>
       </div>
 

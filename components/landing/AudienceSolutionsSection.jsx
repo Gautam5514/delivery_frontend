@@ -33,20 +33,21 @@ const solutions = [
 
 export default function AudienceSolutionsSection() {
   return (
-    <section className="relative z-10 px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl p-8 text-zinc-900 sm:p-10 lg:p-14">
+    <section className="relative z-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.45 }}
-          className="mb-12 flex items-center justify-center gap-3 text-center text-2xl font-semibold sm:text-4xl"
+          className="mb-10 flex items-center justify-center gap-3 text-center text-xl font-semibold sm:mb-12 sm:text-2xl md:text-4xl"
         >
-          <Sparkles className="h-7 w-7" />
+          <Sparkles className="h-6 w-6 sm:h-7 sm:w-7" />
           <h2>One Gopo - Many Solutions</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {/* 2-col grid on mobile/tablet → 4-col on lg */}
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-4 lg:gap-8">
           {solutions.map((solution, index) => (
             <motion.article
               key={solution.title}
@@ -56,24 +57,27 @@ export default function AudienceSolutionsSection() {
               transition={{ duration: 0.45, delay: index * 0.08 }}
               className="relative flex flex-col items-center"
             >
+              {/* Vertical divider (lg+ only between cards) */}
               {index > 0 && (
-                <span className="absolute -left-4 top-20 hidden h-40 border-l border-dashed border-zinc-400 lg:block" />
+                <span className="absolute -left-4 top-16 hidden h-36 border-l border-dashed border-zinc-400 lg:block" />
               )}
 
+              {/* Portrait image */}
               <div
-                className={`relative h-72 w-56 overflow-hidden rounded-t-[7rem] bg-gradient-to-br ${solution.bg}`}
+                className={`relative h-56 w-40 overflow-hidden rounded-t-[5.5rem] bg-gradient-to-br ${solution.bg} sm:h-64 sm:w-48 md:h-72 md:w-52 lg:w-56`}
               >
                 <Image
                   src={solution.image}
                   alt={solution.title}
                   fill
-                  sizes="224px"
+                  sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
                   className="object-cover object-center"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
 
-              <div className="mt-5 rounded-xl bg-zinc-900 px-7 py-3 text-center text-lg font-medium text-white shadow-lg">
+              {/* Label pill */}
+              <div className="mt-4 rounded-xl bg-zinc-900 px-4 py-2.5 text-center text-sm font-medium text-white shadow-lg sm:px-6 sm:py-3 sm:text-base lg:rounded-xl lg:px-7">
                 {solution.title}
               </div>
             </motion.article>

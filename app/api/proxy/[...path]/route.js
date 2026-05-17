@@ -39,21 +39,30 @@ async function proxy(request, context) {
   const method = request.method.toUpperCase();
   const hasBody = !["GET", "HEAD"].includes(method);
 
-  // Read the request body into an ArrayBuffer so it can be forwarded reliably
-  // across all content types (JSON, multipart/form-data, binary blobs).
+  // For multipart uploads (photo batches), stream the request body directly to
+  // the backend instead of buffering the entire payload in memory first.
+  // This halves effective upload time — the backend starts receiving bytes while
+  // the browser is still sending, rather than waiting for the full upload to land
+  // in the proxy before forwarding begins.
+  // For all other content types (JSON, form-urlencoded) buffer as before so we
+  // can safely handle empty bodies.
   let body = undefined;
   if (hasBody) {
-    body = await request.arrayBuffer();
-    if (body.byteLength === 0) body = undefined;
+    const ct = request.headers.get("content-type") || "";
+    if (ct.startsWith("multipart/form-data")) {
+      body = request.body; // ReadableStream — no memory buffer
+    } else {
+      const buf = await request.arrayBuffer();
+      if (buf.byteLength > 0) body = buf;
+    }
   }
 
   let backendRes;
   try {
-    backendRes = await fetch(targetUrl, {
-      method,
-      headers: outHeaders,
-      body,
-    });
+    // duplex:"half" is required by the fetch spec when body is a ReadableStream.
+    const fetchInit = { method, headers: outHeaders, body };
+    if (body && typeof body.getReader === "function") fetchInit.duplex = "half";
+    backendRes = await fetch(targetUrl, fetchInit);
   } catch (networkError) {
     console.error("[proxy] Backend unreachable:", networkError.message);
     return new Response(

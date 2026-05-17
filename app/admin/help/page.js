@@ -155,7 +155,7 @@ const faqs = [
   {
     question: "What's the difference between Basic, Pro, and Premium plans?",
     answer:
-      "Plans differ in the number of photo uploads allowed per billing cycle: Starter (500), Pro (2,000), and Premium (10,000). All plans support unlimited events and guests. Upgrade at any time from the Billing page — quota resets at the start of each new billing period.",
+      "Plans differ in monthly photo upload capacity: Starter (1,500), Pro (6,000), and Studio (20,000). All plans include every feature — AI face matching, private galleries, QR registration, and analytics. Upgrade at any time from the Billing page; quota resets at the start of each new billing period.",
   },
   {
     question: "Why are some photos taking a long time to process?",

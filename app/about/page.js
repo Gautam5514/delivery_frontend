@@ -19,7 +19,7 @@ export default function AboutPage() {
           <StaticPageHero
             eyebrow="About"
             title="Building smarter photo experiences for every event"
-            description="Kwikpic helps hosts, guests, and photographers discover and deliver memories with fast AI face matching and private sharing."
+            description="Gopo helps hosts, guests, and photographers discover and deliver memories with fast AI face matching and private sharing."
             primaryHref="/register"
             primaryLabel="Join Now"
             secondaryHref="/services"
