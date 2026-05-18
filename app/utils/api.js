@@ -98,15 +98,32 @@ const parseResponse = async (response) => {
   return data;
 };
 
+const withJsonHeaders = (options = {}) => {
+  const body = options.body;
+  const shouldMarkJson =
+    typeof body === "string" &&
+    body.length > 0 &&
+    !(typeof FormData !== "undefined" && body instanceof FormData);
+
+  if (!shouldMarkJson) return options;
+
+  const headers = new Headers(options.headers || {});
+  if (!headers.has("Content-Type")) {
+    headers.set("Content-Type", "application/json");
+  }
+
+  return { ...options, headers };
+};
+
 export const apiCall = async (endpoint, options = {}) => {
   const url = `/api/proxy${endpoint}`;
-  const response = await fetch(url, options);
+  const response = await fetch(url, withJsonHeaders(options));
   return parseResponse(response);
 };
 
 export const superadminApiCall = async (endpoint, options = {}) => {
   const url = `/api/superadmin-proxy${endpoint}`;
-  const response = await fetch(url, options);
+  const response = await fetch(url, withJsonHeaders(options));
 
   const contentType = response.headers.get("content-type") || "";
   const isJson = contentType.includes("application/json");
