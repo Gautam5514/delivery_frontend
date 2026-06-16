@@ -40,7 +40,7 @@ export default function AdvancedShowcaseSection() {
             <div className="relative overflow-hidden rounded-[1.7rem] border border-[#d4dbe3] bg-white shadow-[0_20px_40px_rgba(26,38,62,0.12)]">
               <div className="relative h-[260px] w-full sm:h-[320px] md:h-[360px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?q=80&w=1300&auto=format&fit=crop"
+                  src="/images/feat_ai_match.png"
                   alt="AI face recognition in street crowd"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -134,7 +134,7 @@ export default function AdvancedShowcaseSection() {
             <div className="absolute inset-0 rounded-full bg-zinc-300" />
             <div className="relative z-10 h-[320px] w-full sm:h-[400px] lg:h-[500px]">
               <Image
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop"
+                src="/images/feat_camera_pro.png"
                 alt="Professional photographer using camera"
                 fill
                 sizes="(max-width: 768px) 100vw, 700px"

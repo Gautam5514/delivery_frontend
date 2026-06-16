@@ -351,90 +351,153 @@ export default function AnalyticsPage() {
             )}
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-100 bg-zinc-50/80">
-                <tr>
-                  <th className="px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-                    Event
-                  </th>
-                  <th className="px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-                    Code
-                  </th>
-                  <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-                    Guests
-                  </th>
-                  <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-                    Photos
-                  </th>
-                  <th className="hidden px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400 md:table-cell">
-                    Status
-                  </th>
-                  <th className="hidden px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400 lg:table-cell">
-                    Guest coverage
-                  </th>
-                  <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-100">
-                {filteredEvents.map((event) => {
-                  return (
-                    <tr
-                      key={event._id}
-                      className="transition hover:bg-zinc-50/80"
+          <>
+            {/* Mobile guest/event cards list (hidden on desktop) */}
+            <div className="divide-y divide-zinc-200 md:hidden bg-zinc-50/50">
+              {filteredEvents.map((event) => (
+                <div key={event._id} className="flex flex-col gap-3.5 p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-extrabold text-zinc-950 text-sm tracking-tight">{event.name}</p>
+                      <p className="text-[11px] text-zinc-400 font-semibold mt-0.5">
+                        {new Date(event.createdAt).toLocaleDateString("en-IN", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </p>
+                    </div>
+                    <div className="flex items-center shrink-0">
+                      <StatusBadge
+                        photoCount={event.photoCount}
+                        guestCount={event.guestCount}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 py-1">
+                    <div className="rounded-xl border border-zinc-200 bg-white p-2.5 text-center shadow-sm">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">Code</p>
+                      <p className="mt-1 text-xs font-mono font-bold text-zinc-800 truncate">{event.code}</p>
+                    </div>
+                    <div className="rounded-xl border border-zinc-200 bg-white p-2.5 text-center shadow-sm">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">Guests</p>
+                      <p className="mt-1 text-xs font-extrabold text-zinc-950">{fmt(event.guestCount)}</p>
+                    </div>
+                    <div className="rounded-xl border border-zinc-200 bg-white p-2.5 text-center shadow-sm">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400">Photos</p>
+                      <p className="mt-1 text-xs font-extrabold text-zinc-950">{fmt(event.photoCount)}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 border-t border-zinc-150/65 pt-3.5">
+                    <div className="flex-1 max-w-[55%]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 mb-1">Coverage</p>
+                      <RateBar
+                        value={pct(
+                          event.guestCount,
+                          Math.max(event.guestCount, 1)
+                        )}
+                      />
+                    </div>
+                    <Link
+                      href={`/admin/events/${event._id}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-zinc-900 bg-zinc-900 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-black shadow-sm"
                     >
-                      <td className="px-6 py-4">
-                        <p className="font-bold text-zinc-900">{event.name}</p>
-                        <p className="mt-0.5 text-xs text-zinc-400">
-                          {new Date(event.createdAt).toLocaleDateString(
-                            "en-IN",
-                            { day: "numeric", month: "short", year: "numeric" }
-                          )}
-                        </p>
-                      </td>
-                      <td className="px-4 py-4">
-                        <span className="inline-flex items-center gap-1 rounded-md bg-zinc-100 px-2 py-1 font-mono text-xs font-bold text-zinc-700">
-                          <QrCode className="h-3 w-3" />
-                          {event.code}
-                        </span>
-                      </td>
-                      <td className="px-4 py-4 text-right font-bold text-zinc-900">
-                        {fmt(event.guestCount)}
-                      </td>
-                      <td className="px-4 py-4 text-right font-bold text-zinc-900">
-                        {fmt(event.photoCount)}
-                      </td>
-                      <td className="hidden px-4 py-4 md:table-cell">
-                        <StatusBadge
-                          photoCount={event.photoCount}
-                          guestCount={event.guestCount}
-                        />
-                      </td>
-                      <td className="hidden px-4 py-4 lg:table-cell">
-                        <RateBar
-                          value={pct(
-                            event.guestCount,
-                            Math.max(event.guestCount, 1)
-                          )}
-                        />
-                      </td>
-                      <td className="px-4 py-4 text-right">
-                        <Link
-                          href={`/admin/events/${event._id}`}
-                          className="inline-flex items-center gap-1.5 rounded border border-zinc-900 bg-zinc-900 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-black"
-                        >
-                          View Stats
-                          <ArrowUpRight className="h-3.5 w-3.5" />
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                      View Stats
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table view (hidden on mobile) */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-zinc-100 bg-zinc-50/80">
+                  <tr>
+                    <th className="px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      Event
+                    </th>
+                    <th className="px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      Code
+                    </th>
+                    <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      Guests
+                    </th>
+                    <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      Photos
+                    </th>
+                    <th className="hidden px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400 md:table-cell">
+                      Status
+                    </th>
+                    <th className="hidden px-4 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400 lg:table-cell">
+                      Guest coverage
+                    </th>
+                    <th className="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-100">
+                  {filteredEvents.map((event) => {
+                    return (
+                      <tr
+                        key={event._id}
+                        className="transition hover:bg-zinc-50/80"
+                      >
+                        <td className="px-6 py-4">
+                          <p className="font-bold text-zinc-900">{event.name}</p>
+                          <p className="mt-0.5 text-xs text-zinc-400">
+                            {new Date(event.createdAt).toLocaleDateString(
+                              "en-IN",
+                              { day: "numeric", month: "short", year: "numeric" }
+                            )}
+                          </p>
+                        </td>
+                        <td className="px-4 py-4">
+                          <span className="inline-flex items-center gap-1 rounded-md bg-zinc-100 px-2 py-1 font-mono text-xs font-bold text-zinc-700">
+                            <QrCode className="h-3 w-3" />
+                            {event.code}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 text-right font-bold text-zinc-900">
+                          {fmt(event.guestCount)}
+                        </td>
+                        <td className="px-4 py-4 text-right font-bold text-zinc-900">
+                          {fmt(event.photoCount)}
+                        </td>
+                        <td className="hidden px-4 py-4 md:table-cell">
+                          <StatusBadge
+                            photoCount={event.photoCount}
+                            guestCount={event.guestCount}
+                          />
+                        </td>
+                        <td className="hidden px-4 py-4 lg:table-cell">
+                          <RateBar
+                            value={pct(
+                              event.guestCount,
+                              Math.max(event.guestCount, 1)
+                            )}
+                          />
+                        </td>
+                        <td className="px-4 py-4 text-right">
+                          <Link
+                            href={`/admin/events/${event._id}`}
+                            className="inline-flex items-center gap-1.5 rounded border border-zinc-900 bg-zinc-900 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-black"
+                          >
+                            View Stats
+                            <ArrowUpRight className="h-3.5 w-3.5" />
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </section>
 

@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 const floatingCards = [
   {
     caption: "You uploaded 59 photos to the Day Trip group",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=900&auto=format&fit=crop",
+    image: "/images/card_festival.png",
     className:
       "left-4 top-20 -rotate-6 sm:left-8 md:left-12 lg:left-16 lg:top-24",
     width: "w-44 sm:w-48 md:w-52",
@@ -18,8 +17,7 @@ const floatingCards = [
   },
   {
     caption: "We've found new photos!",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=900&auto=format&fit=crop",
+    image: "/images/feat_selfie.png",
     className:
       "left-44 top-6 rotate-3 sm:left-56 md:left-72 lg:left-80 lg:top-8",
     width: "w-40 sm:w-44 md:w-48",
@@ -30,8 +28,7 @@ const floatingCards = [
   },
   {
     caption: "5 people have joined the Office group",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=900&auto=format&fit=crop",
+    image: "/images/card_corporate.png",
     className:
       "left-1/2 top-44 -translate-x-1/2 -rotate-1 sm:top-40 md:top-48 lg:top-52",
     width: "w-48 sm:w-56 md:w-60",
@@ -42,8 +39,7 @@ const floatingCards = [
   },
   {
     caption: "Akshay has added 32 new photos to the Event group",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop",
+    image: "/images/hero_corporate.png",
     className:
       "right-36 top-20 rotate-[-5deg] sm:right-44 md:right-56 lg:right-72 lg:top-16",
     width: "w-40 sm:w-44 md:w-48",
@@ -54,8 +50,7 @@ const floatingCards = [
   },
   {
     caption: "Jai created the Birthday group!",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=900&auto=format&fit=crop",
+    image: "/images/card_birthday.png",
     className:
       "right-4 top-2 rotate-[7deg] sm:right-8 md:right-16 lg:right-20 lg:top-0",
     width: "w-36 sm:w-40 md:w-44",
@@ -66,8 +61,7 @@ const floatingCards = [
   },
   {
     caption: "We've found common photos of your group",
-    image:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=900&auto=format&fit=crop",
+    image: "/images/card_college.png",
     className:
       "right-2 top-40 rotate-[6deg] sm:right-6 md:right-10 lg:right-12 lg:top-48",
     width: "w-44 sm:w-48 md:w-52",
@@ -152,16 +146,34 @@ export default function CommunityGallerySection() {
         </motion.div>
 
         {/* ── Mobile: horizontal scroll strip (hidden on md+) ── */}
-        <div className="mt-10 md:hidden">
-          <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {floatingCards.map((card, index) => (
-              <MiniCard key={card.caption} card={card} index={index} />
-            ))}
+        <div className="mt-9 md:hidden">
+          <div className="relative overflow-hidden rounded-2xl bg-[#eff1f5] py-6">
+            {/* Subtle dot grid */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(100,116,139,0.35) 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+
+            {/* Scrollable cards */}
+            <div className="relative z-10 flex gap-4 overflow-x-auto px-5 pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {floatingCards.map((card, index) => (
+                <MiniCard key={card.caption} card={card} index={index} />
+              ))}
+            </div>
+
+            {/* Soft fades on both edges */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 bg-gradient-to-r from-[#eff1f5] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 bg-gradient-to-l from-[#eff1f5] to-transparent" />
           </div>
-          {/* Fade hint at right edge */}
-          <div className="pointer-events-none relative -mt-16 flex justify-end pr-0">
-            <div className="h-16 w-16 bg-gradient-to-l from-white to-transparent" />
-          </div>
+
+          {/* Swipe hint */}
+          <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+            Swipe to explore →
+          </p>
         </div>
 
         {/* ── Desktop: floating card arena (hidden on mobile) ── */}

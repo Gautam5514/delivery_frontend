@@ -123,7 +123,7 @@ export default function Header({
       <div className="flex h-20 items-center justify-between gap-4 px-4 md:px-8">
         <div className="flex min-w-0 items-center gap-4">
           <button
-            className="text-zinc-500 transition-colors hover:text-zinc-900 md:hidden"
+            className="text-zinc-500 transition-colors hover:text-zinc-900 lg:hidden"
             onClick={onOpenSidebar}
             type="button"
           >

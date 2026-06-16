@@ -10,28 +10,28 @@ const steps = [
     title: "Admin creates the event",
     desc: "The host generates a unique QR code for their event in seconds from the Admin dashboard.",
     icon: QrCode,
-    image: "https://images.unsplash.com/photo-1662383729882-e03ce8e00887?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/images/feat_qr_scan.png"
   },
   {
     id: 2,
     title: "Guests scan & snap a selfie",
     desc: "Guests scan the QR on tables, enter their email, and take a quick selfie to register their face data securely.",
     icon: Camera,
-    image: "https://plus.unsplash.com/premium_photo-1764196595574-5e762563fb56?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/images/feat_selfie.png"
   },
   {
     id: 3,
     title: "AI Auto-Matches Faces",
     desc: "After the event, the admin uploads all photos. Our AI instantly matches faces against registered selfies.",
     icon: Search,
-    image: "https://plus.unsplash.com/premium_photo-1764691387714-f3b960163b3c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/images/feat_ai_match.png"
   },
   {
     id: 4,
     title: "Guests get notified & download",
     desc: "Guests receive an email with a secure link to view and download only the photos they are actually in.",
     icon: Download,
-    image: "https://images.unsplash.com/photo-1762340275855-ae8f4c2c144e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/images/feat_ai_match.png"
   }
 ];
 

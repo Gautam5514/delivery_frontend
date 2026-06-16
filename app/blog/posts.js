@@ -9,7 +9,7 @@ export const blogPosts = [
     author: "Team Gopo",
     category: "Workflow",
     cover:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_camera_pro.png",
     content: [
       "Traditional photo delivery takes too long because files are sorted manually after the event. With AI face matching, the system scans uploaded photos, identifies registered guests, and builds personal galleries automatically.",
       "This removes repetitive work for photographers and event admins. Instead of filtering albums person by person, teams can focus on quality checks and faster publishing.",
@@ -26,7 +26,7 @@ export const blogPosts = [
     author: "Product Team",
     category: "Security",
     cover:
-      "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_ai_match.png",
     content: [
       "Event galleries often expose all photos to all attendees. A privacy-first model is different: each guest accesses only photos matched to their face.",
       "Token-based links, time-limited access, and account verification provide an extra protection layer. This is especially important for private family events and enterprise gatherings.",
@@ -43,7 +43,7 @@ export const blogPosts = [
     author: "Design Team",
     category: "Design",
     cover:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop",
+      "/images/card_wedding.png",
     content: [
       "A premium gallery starts with clarity: clean typography, strong spacing, and obvious action buttons for preview and download.",
       "Performance matters as much as visuals. Fast-loading thumbnails and smooth transitions help users trust the platform instantly.",
@@ -60,7 +60,7 @@ export const blogPosts = [
     author: "Operations Team",
     category: "Operations",
     cover:
-      "https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1400&auto=format&fit=crop",
+      "/images/hero_photography.png",
     content: [
       "Large events generate huge volumes of media. A good upload strategy starts with clear naming conventions and folder grouping by timeline or location.",
       "Batch uploads should run in predictable chunks so retries are easy if network conditions fluctuate.",
@@ -77,7 +77,7 @@ export const blogPosts = [
     author: "Growth Team",
     category: "Business",
     cover:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_camera_pro.png",
     content: [
       "Clients now expect near-instant digital delivery. Manual sorting creates delays that affect satisfaction and referrals.",
       "Automation gives photographers a repeatable delivery pipeline with fewer support messages and fewer missed files.",
@@ -94,7 +94,7 @@ export const blogPosts = [
     author: "Support Team",
     category: "Checklist",
     cover:
-      "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_qr_scan.png",
     content: [
       "Before release, validate upload completeness, event metadata, and registration quality.",
       "Run a small quality sample across different guests to confirm matching confidence and image integrity.",
@@ -111,7 +111,7 @@ export const blogPosts = [
     author: "AI Team",
     category: "AI",
     cover:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_ai_match.png",
     content: [
       "Confidence score expresses how sure the model is that a face match is correct.",
       "Higher thresholds reduce false positives but can miss some edge cases. Lower thresholds include more candidates but need review.",
@@ -128,7 +128,7 @@ export const blogPosts = [
     author: "Engagement Team",
     category: "Engagement",
     cover:
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1400&auto=format&fit=crop",
+      "/images/card_festival.png",
     content: [
       "Registration rate depends on visibility and timing. Place QR prompts where guests naturally pause.",
       "Short instructions and instant confirmation improve completion rates significantly.",
@@ -145,7 +145,7 @@ export const blogPosts = [
     author: "QA Team",
     category: "Quality",
     cover:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1400&auto=format&fit=crop",
+      "/images/card_corporate.png",
     content: [
       "Most delivery failures are process issues: incomplete uploads, inconsistent naming, and poor communication.",
       "Defining upload standards and automated validations catches errors before they affect guests.",
@@ -162,7 +162,7 @@ export const blogPosts = [
     author: "Operations Team",
     category: "Scale",
     cover:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop",
+      "/images/card_college.png",
     content: [
       "Multi-day events need day/session partitions from the beginning. This improves traceability and speeds up troubleshooting.",
       "Use clear handoff points between photographers, data managers, and admin reviewers.",
@@ -179,7 +179,7 @@ export const blogPosts = [
     author: "CX Team",
     category: "Experience",
     cover:
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1400&auto=format&fit=crop",
+      "/images/hero_birthday.png",
     content: [
       "Guests value speed and relevance more than raw album size. Personal galleries deliver both.",
       "When users find their own photos quickly, they are more likely to download and share.",
@@ -196,7 +196,7 @@ export const blogPosts = [
     author: "Leadership",
     category: "Future",
     cover:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1400&auto=format&fit=crop",
+      "/images/feat_selfie.png",
     content: [
       "AI is moving from a matching utility to a complete event media assistant.",
       "Next-generation platforms will support smarter grouping, auto-highlights, and contextual search with stronger privacy defaults.",
@@ -216,7 +216,7 @@ export const featuredBlogPosts = [
     author: "Team Gopo",
     category: "Wedding",
     cover:
-      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop",
+      "/images/about_mission_bg.png",
     content: [
       {
         heading: "Why wedding delivery needs a new workflow",
@@ -251,7 +251,7 @@ export const featuredBlogPosts = [
     author: "Privacy Team",
     category: "Schools",
     cover:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop",
+      "/images/card_school.png",
     content: [
       {
         heading: "Start with controlled access",
@@ -285,7 +285,7 @@ export const featuredBlogPosts = [
     author: "Design Team",
     category: "Corporate",
     cover:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop",
+      "/images/hero_corporate.png",
     content: [
       {
         heading: "Treat the gallery like a brand touchpoint",
@@ -319,7 +319,7 @@ export const featuredBlogPosts = [
     author: "Operations Team",
     category: "College",
     cover:
-      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop",
+      "/images/hero_college.png",
     content: [
       {
         heading: "Expect volume from the start",

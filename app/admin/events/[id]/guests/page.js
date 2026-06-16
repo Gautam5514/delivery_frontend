@@ -215,52 +215,100 @@ export default function EventGuestsPage() {
           </select>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Mobile guest cards (hidden on desktop) */}
+        <div className="divide-y divide-zinc-200 md:hidden bg-zinc-50/50">
+          {paginatedGuests.length === 0 ? (
+            <div className="p-8 text-center text-sm font-bold text-zinc-400">
+              No guests match the selected filters.
+            </div>
+          ) : (
+            paginatedGuests.map((guest) => (
+              <div key={guest._id} className="flex flex-col gap-3 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-black uppercase text-white">
+                      {guest.name?.charAt(0) || "G"}
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-zinc-950 text-sm">{guest.name || "Guest"}</p>
+                      <p className="text-xs text-zinc-500 font-semibold">{guest.email || "-"}</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold text-zinc-400 shrink-0">
+                    {guest.createdAt ? new Date(guest.createdAt).toLocaleDateString(undefined, { dateStyle: 'short' }) : "-"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 border-t border-zinc-100/80 pt-2.5">
+                  <span className="text-[10px] font-bold text-zinc-400">Selfie Status</span>
+                  {guest.selfieUrl ? (
+                    <a 
+                      href={guest.selfieUrl} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-bold text-zinc-700 transition hover:bg-zinc-50 shadow-sm"
+                    >
+                      <Image src={guest.selfieUrl} alt={guest.name || "Guest selfie"} width={16} height={16} className="h-4 w-4 rounded-full object-cover" />
+                      View Selfie
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] font-bold text-zinc-400">
+                      <ImageIcon className="h-3 w-3" />
+                      Missing
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop guest table (hidden on mobile/tablet) */}
+        <div className="hidden overflow-x-auto md:block">
           <table className="w-full min-w-[760px] text-left text-sm">
             <thead className="border-b border-zinc-200 bg-zinc-50 text-zinc-600">
               <tr>
-                <th className="px-5 py-3 font-medium">Guest</th>
-                <th className="px-5 py-3 font-medium">Email</th>
-                <th className="px-5 py-3 font-medium">Selfie</th>
-                <th className="px-5 py-3 font-medium text-right">Joined</th>
+                <th className="px-5 py-4 font-bold text-zinc-500">Guest</th>
+                <th className="px-5 py-4 font-bold text-zinc-500">Email</th>
+                <th className="px-5 py-4 font-bold text-zinc-500">Selfie</th>
+                <th className="px-5 py-4 font-bold text-right text-zinc-500">Joined</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-200">
               {paginatedGuests.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-5 py-12 text-center text-sm text-zinc-500">
+                  <td colSpan={4} className="px-5 py-12 text-center text-sm font-bold text-zinc-400">
                     No guests match the selected filters.
                   </td>
                 </tr>
               ) : (
                 paginatedGuests.map((guest) => (
-                  <tr key={guest._id} className="transition hover:bg-zinc-50">
+                  <tr key={guest._id} className="transition hover:bg-zinc-50/50">
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold uppercase text-zinc-700">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold uppercase text-zinc-700">
                           {guest.name?.charAt(0) || "G"}
                         </div>
                         <div>
-                          <p className="font-medium text-zinc-950">{guest.name || "Guest"}</p>
-                          {/* <p className="text-xs text-zinc-500">ID: {guest._id}</p> */}
+                          <p className="font-extrabold text-zinc-950">{guest.name || "Guest"}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-5 py-4 text-zinc-700">{guest.email || "-"}</td>
+                    <td className="px-5 py-4 text-zinc-600 font-semibold">{guest.email || "-"}</td>
                     <td className="px-5 py-4">
                       {guest.selfieUrl ? (
-                        <a href={guest.selfieUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50">
+                        <a href={guest.selfieUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:bg-zinc-50">
                           <Image src={guest.selfieUrl} alt={guest.name || "Guest selfie"} width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
                           View selfie
                         </a>
                       ) : (
-                        <span className="inline-flex items-center gap-2 rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-500">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-semibold text-zinc-400">
                           <ImageIcon className="h-3.5 w-3.5" />
                           Missing
                         </span>
                       )}
                     </td>
-                    <td className="whitespace-nowrap px-5 py-4 text-right text-zinc-500">
+                    <td className="whitespace-nowrap px-5 py-4 text-right text-zinc-500 font-semibold">
                       {guest.createdAt ? new Date(guest.createdAt).toLocaleDateString() : "-"}
                     </td>
                   </tr>

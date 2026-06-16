@@ -31,7 +31,7 @@ const GALLERY_ITEMS = [
     event: "Sharma Wedding — Jaipur",
     photos: 2840,
     guests: 412,
-    cover: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/about_mission_bg.png",
     aspect: "tall",
   },
   {
@@ -40,7 +40,7 @@ const GALLERY_ITEMS = [
     event: "TechSummit 2026 — Delhi",
     photos: 1560,
     guests: 890,
-    cover: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/hero_corporate.png",
     aspect: "wide",
   },
   {
@@ -49,7 +49,7 @@ const GALLERY_ITEMS = [
     event: "Farewell Night — IIT Bombay",
     photos: 3200,
     guests: 1100,
-    cover: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/hero_college.png",
     aspect: "square",
   },
   {
@@ -58,7 +58,7 @@ const GALLERY_ITEMS = [
     event: "Mehta & Priya — Udaipur Palace",
     photos: 4100,
     guests: 680,
-    cover: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/card_wedding.png",
     aspect: "tall",
   },
   {
@@ -67,7 +67,7 @@ const GALLERY_ITEMS = [
     event: "Annual Gala — Mumbai",
     photos: 980,
     guests: 320,
-    cover: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/card_festival.png",
     aspect: "wide",
   },
   {
@@ -76,7 +76,7 @@ const GALLERY_ITEMS = [
     event: "Product Launch — Bangalore",
     photos: 740,
     guests: 220,
-    cover: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/hero_birthday.png",
     aspect: "square",
   },
   {
@@ -85,7 +85,7 @@ const GALLERY_ITEMS = [
     event: "Annual Day — DPS Vasant Kunj",
     photos: 1890,
     guests: 540,
-    cover: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/card_school.png",
     aspect: "wide",
   },
   {
@@ -94,7 +94,7 @@ const GALLERY_ITEMS = [
     event: "Cultural Fest — NIT Trichy",
     photos: 2600,
     guests: 1400,
-    cover: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/card_festival.png",
     aspect: "tall",
   },
   {
@@ -103,7 +103,7 @@ const GALLERY_ITEMS = [
     event: "Award Night — Hyderabad",
     photos: 1120,
     guests: 280,
-    cover: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1400&auto=format&fit=crop",
+    cover: "/images/feat_qr_scan.png",
     aspect: "square",
   },
 ];
@@ -117,7 +117,7 @@ const EVENT_CATEGORIES = [
     tagline: "Every moment, every guest.",
     description:
       "From haldi to reception — every frame delivered privately to each guest within hours. No shared albums, no chaos.",
-    cover: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200&auto=format&fit=crop",
+    cover: "/images/card_wedding.png",
     stat: "4,000+ photos · 98% match rate",
   },
   {
@@ -125,7 +125,7 @@ const EVENT_CATEGORIES = [
     tagline: "On-brand. On-time.",
     description:
       "Conferences, award nights, and product launches — delivered with clean UI that matches your company's standards.",
-    cover: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop",
+    cover: "/images/card_corporate.png",
     stat: "500–5,000 guests · Same-day delivery",
   },
   {
@@ -133,7 +133,7 @@ const EVENT_CATEGORIES = [
     tagline: "Memories for everyone.",
     description:
       "Fests, farewells, annual days — students and parents get personal galleries without sorting through thousands of shots.",
-    cover: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop",
+    cover: "/images/card_college.png",
     stat: "1,000–5,000 attendees · QR check-in",
   },
 ];
@@ -261,13 +261,13 @@ export default function ShowcaseGalleryPage() {
           {/* Floating photo strips — decorative */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
             <div className="absolute left-4 top-24 flex flex-col gap-3 -rotate-6">
-              {["photo-1519741497674-611481863552", "photo-1511285560929-80b456fea0bc", "photo-1541339907198-e08756dedf3f"].map((id) => (
-                <img key={id} src={`https://images.unsplash.com/${id}?q=60&w=160&auto=format&fit=crop`} alt="" className="h-28 w-24 rounded-xl object-cover" />
+              {["/images/card_wedding.png", "/images/about_mission_bg.png", "/images/hero_college.png"].map((src) => (
+                <img key={src} src={src} alt="" className="h-28 w-24 rounded-xl object-cover" />
               ))}
             </div>
             <div className="absolute right-4 top-12 flex flex-col gap-3 rotate-6">
-              {["photo-1511578314322-379afb476865", "photo-1540575467063-178a50c2df87", "photo-1492684223066-81342ee5ff30"].map((id) => (
-                <img key={id} src={`https://images.unsplash.com/${id}?q=60&w=160&auto=format&fit=crop`} alt="" className="h-28 w-24 rounded-xl object-cover" />
+              {["/images/hero_corporate.png", "/images/feat_qr_scan.png", "/images/card_festival.png"].map((src) => (
+                <img key={src} src={src} alt="" className="h-28 w-24 rounded-xl object-cover" />
               ))}
             </div>
           </div>
@@ -593,21 +593,21 @@ export default function ShowcaseGalleryPage() {
                     {/* Masonry grid mockup */}
                     <div className="grid grid-cols-3 gap-1 p-2">
                       {[
-                        "photo-1519741497674-611481863552",
-                        "photo-1511285560929-80b456fea0bc",
-                        "photo-1541339907198-e08756dedf3f",
-                        "photo-1492684223066-81342ee5ff30",
-                        "photo-1511578314322-379afb476865",
-                        "photo-1540575467063-178a50c2df87",
-                      ].map((id, idx) => (
+                        "/images/card_wedding.png",
+                        "/images/about_mission_bg.png",
+                        "/images/hero_college.png",
+                        "/images/card_festival.png",
+                        "/images/hero_corporate.png",
+                        "/images/feat_qr_scan.png",
+                      ].map((src, idx) => (
                         <div
-                          key={id}
+                          key={src}
                           className={`overflow-hidden rounded-lg bg-zinc-100 ${
                             idx === 0 || idx === 4 ? "row-span-1" : ""
                           }`}
                         >
                           <img
-                            src={`https://images.unsplash.com/${id}?q=60&w=200&auto=format&fit=crop`}
+                            src={src}
                             alt=""
                             className="h-24 w-full object-cover"
                           />

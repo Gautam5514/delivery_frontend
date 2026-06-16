@@ -11,29 +11,25 @@ const heroSlides = [
     title: "Forgotten Place",
     description:
       "Discover a cinematic experience for your events. High-end visual identity, premium storytelling, and precise AI-powered photo delivery in one polished platform.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1674389991678-0836ca77c7f7?q=80&w=1740&auto=format&fit=crop",
+    image: "/images/hero_wedding.png",
   },
   {
     title: "Frames That Feel Alive",
     description:
       "From camera-first event coverage to private guest galleries, deliver every moment with a refined, premium presentation.",
-    image:
-      "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1740&auto=format&fit=crop",
+    image: "/images/hero_photography.png",
   },
   {
     title: "Crafted For Modern Photography",
     description:
       "Turn thousands of event shots into an elegant viewing flow with premium storytelling, search, and effortless sharing.",
-    image:
-      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1742&auto=format&fit=crop",
+    image: "/images/hero_corporate.png",
   },
   {
     title: "Event Delivery, Upgraded",
     description:
       "Showcase cameras, creators, and final memories in a polished interface designed for studios, photographers, and guests.",
-    image:
-      "https://images.unsplash.com/photo-1548502499-ef49e8cf98d4?q=80&w=1740&auto=format&fit=crop",
+    image: "/images/hero_birthday.png",
   },
 ];
 
@@ -53,7 +49,7 @@ export default function HeroSection() {
     setActiveSlide((c) => (c + 1) % heroSlides.length);
 
   return (
-    <section className="relative isolate min-h-screen overflow-hidden">
+    <section className="relative isolate min-h-[100svh] overflow-hidden">
       {heroSlides.map((slide, index) => (
         <Image
           key={slide.image}
@@ -76,19 +72,19 @@ export default function HeroSection() {
       <button
         aria-label="Previous slide"
         onClick={goToPrevious}
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-zinc-300/70 bg-white/72 p-2 text-zinc-700 shadow-lg shadow-zinc-900/10 backdrop-blur-md transition hover:bg-white hover:text-zinc-900 sm:left-8"
+        className="absolute left-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full border border-zinc-300/70 bg-white/72 p-2 text-zinc-700 shadow-lg shadow-zinc-900/10 backdrop-blur-md transition hover:bg-white hover:text-zinc-900 sm:left-8 sm:block"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
       <button
         aria-label="Next slide"
         onClick={goToNext}
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-zinc-300/70 bg-white/72 p-2 text-zinc-700 shadow-lg shadow-zinc-900/10 backdrop-blur-md transition hover:bg-white hover:text-zinc-900 sm:right-8"
+        className="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full border border-zinc-300/70 bg-white/72 p-2 text-zinc-700 shadow-lg shadow-zinc-900/10 backdrop-blur-md transition hover:bg-white hover:text-zinc-900 sm:right-8 sm:block"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-4 pt-20 pb-16 sm:px-6 sm:pt-16 lg:px-8">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-center px-4 pt-24 pb-12 sm:px-6 sm:pt-16 sm:pb-16 lg:px-8">
         <div className="w-full md:ml-auto md:max-w-xl lg:max-w-2xl">
           <motion.h1
             key={heroSlides[activeSlide].title}
@@ -104,7 +100,7 @@ export default function HeroSection() {
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: 180, opacity: 1 }}
             transition={{ duration: 0.45, delay: 0.2 }}
-            className="mt-7 h-[2px] bg-zinc-900"
+            className="mt-5 h-[2px] bg-zinc-900 sm:mt-7"
           />
 
           <motion.p
@@ -112,7 +108,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="mt-6 max-w-xl text-sm leading-7 text-zinc-700 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg"
+            className="mt-4 max-w-xl text-sm leading-7 text-zinc-700 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg"
           >
             {heroSlides[activeSlide].description}
           </motion.p>
@@ -121,7 +117,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.25 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4"
           >
             <Link
               href="/register"
@@ -141,7 +137,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.35 }}
-            className="mt-10 flex flex-wrap items-center gap-5 text-xs uppercase tracking-[0.2em] text-zinc-600"
+            className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.2em] text-zinc-600 sm:mt-10 sm:gap-5 sm:text-xs"
           >
             <span>Premium Visual Theme</span>
             <span className="h-1 w-1 rounded-full bg-zinc-500/60" />
@@ -150,20 +146,40 @@ export default function HeroSection() {
             <span>{String(activeSlide + 1).padStart(2, "0")} / 04</span>
           </motion.div>
 
-          <div className="mt-8 flex items-center gap-3">
-            {heroSlides.map((slide, index) => (
-              <button
-                key={slide.title}
-                type="button"
-                aria-label={`Go to slide ${index + 1}`}
-                onClick={() => setActiveSlide(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  index === activeSlide
-                    ? "w-10 bg-zinc-900"
-                    : "w-2.5 bg-zinc-400/60 hover:bg-zinc-500/80"
-                }`}
-              />
-            ))}
+          <div className="mt-7 flex items-center gap-4 sm:mt-8">
+            <button
+              type="button"
+              aria-label="Previous slide"
+              onClick={goToPrevious}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300/80 bg-white/80 text-zinc-700 shadow-sm backdrop-blur-md transition hover:bg-white hover:text-zinc-900 active:scale-95 sm:hidden"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.title}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    index === activeSlide
+                      ? "w-10 bg-zinc-900"
+                      : "w-2.5 bg-zinc-400/60 hover:bg-zinc-500/80"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              aria-label="Next slide"
+              onClick={goToNext}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300/80 bg-white/80 text-zinc-700 shadow-sm backdrop-blur-md transition hover:bg-white hover:text-zinc-900 active:scale-95 sm:hidden"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </div>

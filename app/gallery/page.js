@@ -179,6 +179,7 @@ export default function GalleryPage() {
   // ── UI ────────────────────────────────────────────────────────────────────
   const [activeEventId,    setActiveEventId]    = useState("all");
   const [lightboxIdx,      setLightboxIdx]      = useState(null);
+  const [touchStartX,      setTouchStartX]      = useState(null);
   const [isZipDownloading, setIsZipDownloading] = useState(false);
   const [showDeleteConfirm,setShowDeleteConfirm]= useState(false);
   const [isDeleting,       setIsDeleting]       = useState(false);
@@ -915,6 +916,18 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/96"
             onClick={() => setLightboxIdx(null)}
+            onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              if (touchStartX === null) return;
+              const touchEndX = e.changedTouches[0].clientX;
+              const diffX = touchStartX - touchEndX;
+              if (diffX > 50) {
+                nextPhoto();
+              } else if (diffX < -50) {
+                prevPhoto();
+              }
+              setTouchStartX(null);
+            }}
           >
             {/* Close */}
             <button

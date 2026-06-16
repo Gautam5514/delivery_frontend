@@ -97,7 +97,7 @@ export default function Navbar() {
                   <div className="grid grid-cols-[0.76fr_1.24fr] gap-2.5">
                     <div className="relative overflow-hidden rounded border border-white/50 bg-zinc-950 p-5 text-white shadow-inner">
                       <img
-                        src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=900&auto=format&fit=crop"
+                        src="/images/hero_photography.png"
                         alt="Event photography"
                         className="absolute inset-0 h-full w-full object-cover opacity-60"
                       />

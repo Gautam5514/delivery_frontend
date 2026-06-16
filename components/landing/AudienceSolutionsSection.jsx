@@ -8,26 +8,22 @@ const solutions = [
   {
     title: "Event Planners",
     bg: "from-zinc-700 to-zinc-500",
-    image:
-      "https://plus.unsplash.com/premium_photo-1661389748409-0a8f74602f34?q=80&w=900&auto=format&fit=crop",
+    image: "/images/card_wedding.png",
   },
   {
     title: "Photographers",
     bg: "from-zinc-700 to-zinc-500",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=900&auto=format&fit=crop",
+    image: "/images/feat_camera_pro.png",
   },
   {
     title: "Individual Hosts",
     bg: "from-zinc-700 to-zinc-500",
-    image:
-      "https://plus.unsplash.com/premium_photo-1674389878263-3713072a4f33?q=80&w=900&auto=format&fit=crop",
+    image: "/images/hero_birthday.png",
   },
   {
     title: "Organisations",
     bg: "from-zinc-700 to-zinc-500",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=900&auto=format&fit=crop",
+    image: "/images/hero_corporate.png",
   },
 ];
 

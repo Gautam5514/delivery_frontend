@@ -274,7 +274,7 @@ export default function AdminProfilePage() {
           description="Shown in the sidebar and header across the admin panel."
         />
         <form onSubmit={handleSave} className="p-6">
-          <div className="flex items-start gap-8">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-8">
 
             {/* ── Avatar (compact, natural height) ── */}
             <div className="flex shrink-0 flex-col items-center gap-3">
@@ -314,7 +314,7 @@ export default function AdminProfilePage() {
             </div>
 
             {/* ── Fields ── */}
-            <div className="flex flex-1 flex-col gap-4">
+            <div className="flex w-full flex-col gap-4 sm:flex-1">
               <div>
                 <label className="mb-1.5 block text-xs font-bold uppercase tracking-[0.18em] text-zinc-400">
                   Display Name

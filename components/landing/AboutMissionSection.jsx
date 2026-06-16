@@ -34,7 +34,7 @@ export default function AboutMissionSection() {
       {/* Background Image & Hero Overlay */}
       <div className="relative w-full h-[550px] lg:h-[600px]">
         <img
-          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2070&auto=format&fit=crop"
+          src="/images/about_mission_bg.png"
           alt="Indian event celebration crowd"
           className="absolute inset-0 h-full w-full object-cover"
         />

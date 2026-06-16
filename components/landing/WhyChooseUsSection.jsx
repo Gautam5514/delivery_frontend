@@ -143,7 +143,7 @@ function GraphicIllustration() {
         <div className="relative rounded-[24px] border-[5px] border-slate-900 bg-slate-900 overflow-hidden shadow-2xl rotate-[-3deg]">
           <div className="relative w-full" style={{ aspectRatio: "9/18" }}>
             <Image
-              src="https://images.unsplash.com/photo-1598965402089-897ce52e8355?q=80&w=600&auto=format&fit=crop"
+              src="/images/feat_ai_match.png"
               alt="Gallery App"
               fill
               sizes="200px"
@@ -164,7 +164,7 @@ function GraphicIllustration() {
         <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
           <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 relative bg-slate-200 sm:w-8 sm:h-8">
             <Image
-              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=100&h=100&fit=crop"
+              src="/images/card_wedding.png"
               alt="Event"
               width={32}
               height={32}
@@ -189,7 +189,7 @@ function GraphicIllustration() {
         className="absolute bottom-[15px] left-[120px] w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden z-30 bg-slate-200 sm:bottom-[20px] sm:left-[150px] sm:w-24 sm:h-24"
       >
         <Image
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop"
+          src="/images/feat_selfie.png"
           alt="User"
           fill
           sizes="96px"

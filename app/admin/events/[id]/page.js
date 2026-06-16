@@ -769,7 +769,7 @@ export default function EventDetailsPage() {
                                 /* ── PHOTO GRID ── */
                                 <>
                                     <div className="overflow-y-auto" style={{ maxHeight: 320 }}>
-                                        <div className={`grid gap-1.5 ${getGridCols(photos.length)}`}>
+                                        <div className="grid gap-1.5 grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
                                             {previews.map((src, idx) => (
                                                 <div key={idx} className="group relative aspect-square overflow-hidden rounded-lg border border-zinc-200">
                                                     {/* eslint-disable-next-line @next/next/no-img-element */}
