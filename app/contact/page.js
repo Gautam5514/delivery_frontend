@@ -68,7 +68,7 @@ const TRUST_CARDS = [
     icon: Heart,
     title: "Personal Attention",
     description:
-      "Every event is different. You'll work with a real Gopo team member.",
+      "Every event is different. You'll work with a real FaceDeliver team member.",
   },
   {
     icon: Users,

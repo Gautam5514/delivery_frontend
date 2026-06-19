@@ -51,7 +51,7 @@ const policySections = [
   {
     title: "How we use information",
     body:
-      "Gopo uses guest and event data to connect each person with the photos they appear in.",
+      "FaceDeliver uses guest and event data to connect each person with the photos they appear in.",
     items: [
       "Register guests for a specific event and verify their access.",
       "Match registered guests with uploaded event photos.",
@@ -84,7 +84,7 @@ const policySections = [
   {
     title: "Third-party processors",
     body:
-      "Gopo uses infrastructure providers to store assets, send email, process payments, and monitor reliability.",
+      "FaceDeliver uses infrastructure providers to store assets, send email, process payments, and monitor reliability.",
     items: [
       "Cloudinary may store uploaded selfies and event photos.",
       "MongoDB stores application records, guest metadata, and matching records.",
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
                 Clear privacy rules for private event photo delivery.
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600">
-                This page explains how Gopo collects, uses, protects, and deletes data when
+                This page explains how FaceDeliver collects, uses, protects, and deletes data when
                 guests register for AI photo matching and admins manage event galleries.
               </p>
             </div>
@@ -184,11 +184,11 @@ export default function PrivacyPage() {
                 Need help with your data?
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300">
-                Contact the Gopo team for access, correction, retention, or deletion requests.
+                Contact the FaceDeliver team for access, correction, retention, or deletion requests.
               </p>
             </div>
             <a
-              href="mailto:support@Gopo.com"
+              href="mailto:support@facedeliver.shop"
               className="inline-flex items-center justify-center gap-2 rounded bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-950 transition hover:bg-zinc-100"
             >
               <Mail className="h-4 w-4" />

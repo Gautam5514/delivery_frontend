@@ -1,6 +1,6 @@
 {
-  "name": "Gopo – Event Photo Matching",
-  "short_name": "Gopo",
+  "name": "FaceDeliver – Event Photo Matching",
+  "short_name": "FaceDeliver",
   "description": "Scan your QR code to register and receive your event photos automatically.",
   "start_url": "/",
   "display": "standalone",

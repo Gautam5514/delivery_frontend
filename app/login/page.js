@@ -144,7 +144,7 @@ export default function AuthPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
               <span className="text-sm font-bold text-black leading-none">G</span>
             </div>
-            <span className="text-lg font-semibold tracking-tight">Gopo</span>
+            <span className="text-lg font-semibold tracking-tight">FaceDeliver</span>
           </div>
 
           {/* Hero copy */}
@@ -180,7 +180,7 @@ export default function AuthPage() {
           </div>
 
           <p className="text-xs text-zinc-700">
-            © 2026 Gopo · Hellobj
+            © 2026 FaceDeliver
           </p>
         </aside>
 
@@ -192,7 +192,7 @@ export default function AuthPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
               <span className="text-sm font-bold text-black">G</span>
             </div>
-            <span className="text-lg font-semibold">Gopo</span>
+            <span className="text-lg font-semibold">FaceDeliver</span>
           </div>
 
           <motion.div

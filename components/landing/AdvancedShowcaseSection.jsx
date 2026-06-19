@@ -40,7 +40,7 @@ export default function AdvancedShowcaseSection() {
             <div className="relative overflow-hidden rounded-[1.7rem] border border-[#d4dbe3] bg-white shadow-[0_20px_40px_rgba(26,38,62,0.12)]">
               <div className="relative h-[260px] w-full sm:h-[320px] md:h-[360px]">
                 <Image
-                  src="/images/feat_ai_match.png"
+                  src="/images/feat_ai_match.webp"
                   alt="AI face recognition in street crowd"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -61,10 +61,10 @@ export default function AdvancedShowcaseSection() {
             transition={{ duration: 0.45, delay: 0.05 }}
           >
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-600">
-              How Gopo Works?
+              How FaceDeliver Works?
             </p>
             <h2 className="mt-3 text-2xl font-semibold leading-tight sm:text-3xl lg:text-5xl">
-              Get Started with Gopo
+              Get Started with FaceDeliver
             </h2>
             <div className="mt-3 h-1 w-28 rounded-full bg-zinc-700 sm:w-35" />
 
@@ -134,7 +134,7 @@ export default function AdvancedShowcaseSection() {
             <div className="absolute inset-0 rounded-full bg-zinc-300" />
             <div className="relative z-10 h-[320px] w-full sm:h-[400px] lg:h-[500px]">
               <Image
-                src="/images/feat_camera_pro.png"
+                src="/images/feat_camera_pro.webp"
                 alt="Professional photographer using camera"
                 fill
                 sizes="(max-width: 768px) 100vw, 700px"

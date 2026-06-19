@@ -6,6 +6,14 @@ import {
   StaticPageHighlights,
   StaticPageCallout,
 } from "@/components/landing/StaticPageSections";
+import { buildMetadata } from "../seo.config";
+
+export const metadata = buildMetadata({
+  title: "How It Works – AI Face Matching & QR Photo Delivery",
+  description:
+    "See how FaceDeliver works: upload event photos, guests scan a QR code and upload a selfie, and AI face recognition delivers each guest their own photos in seconds.",
+  path: "/how-it-works",
+});
 
 export default function HowItWorksPage() {
   return (
@@ -16,11 +24,11 @@ export default function HowItWorksPage() {
           <StaticPageHero
             eyebrow="How It Works"
             title="From selfie registration to a personal event gallery"
-            description="Gopo turns a large event photo collection into a clean guest experience. Register once, match fast, and deliver private galleries without manual sorting."
+            description="FaceDeliver turns a large event photo collection into a clean guest experience. Register once, match fast, and deliver private galleries without manual sorting."
             primaryHref="/register"
             primaryLabel="Try Registration"
             secondaryHref="/about"
-            secondaryLabel="About Gopo"
+            secondaryLabel="About FaceDeliver"
           />
 
           <StaticPageHighlights
@@ -34,7 +42,7 @@ export default function HowItWorksPage() {
               {
                 title: "2. Photo Processing",
                 description:
-                  "Admins upload event photos in bulk. Gopo indexes them and prepares them for fast face-matching operations.",
+                  "Admins upload event photos in bulk. FaceDeliver indexes them and prepares them for fast face-matching operations.",
               },
               {
                 title: "3. Private Delivery",

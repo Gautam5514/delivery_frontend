@@ -101,30 +101,42 @@ function ConsentRow({ consentGiven, onToggle, onRead }) {
   );
 }
 
-function SelfiePanel({ image, imagePreview, isCameraActive, consentGiven, videoRef, canvasRef, onCapture, onReset, onStartCamera, onFileSelect }) {
+function SelfiePanel({ image, imagePreview, isCameraActive, consentGiven, videoRef, canvasRef, onCapture, onReset, onStartCamera, onFileSelect, onClear }) {
   return (
     <div className="flex h-full flex-col">
       <div className="relative flex-1 overflow-hidden rounded-2xl bg-black/80 ring-1 ring-white/10">
         <AnimatePresence mode="wait">
           {image ? (
             <motion.div key="captured" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative h-full w-full">
+              {/* object-contain so the guest can verify their whole face is in frame */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={imagePreview} className="h-full w-full object-cover" alt="Selfie preview" />
+              <img src={imagePreview} className="h-full w-full bg-black object-contain" alt="Selfie preview" />
               <div className="absolute left-3 top-3 rounded-full border border-emerald-400/30 bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300 backdrop-blur-md">
                 ✓ Captured
               </div>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+              <div className="absolute inset-x-3 bottom-4 flex flex-wrap items-center justify-center gap-2">
                 <button
                   type="button" onClick={onReset}
-                  className="flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/20"
+                  className="flex min-h-[44px] items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/20 active:scale-95"
                 >
                   <RefreshCw className="h-4 w-4" /> Retake
                 </button>
+                <label className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/20 active:scale-95">
+                  <UploadCloud className="h-4 w-4" /> Upload New
+                  <input type="file" accept="image/*" className="hidden" onChange={onFileSelect} />
+                </label>
               </div>
             </motion.div>
           ) : isCameraActive ? (
             <motion.div key="camera" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative h-full w-full bg-black">
               <video ref={videoRef} autoPlay playsInline className="h-full w-full scale-x-[-1] object-cover" />
+              <button
+                type="button" onClick={onClear}
+                aria-label="Close camera"
+                className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-xl transition-colors hover:bg-white/20 active:scale-95"
+              >
+                <X className="h-5 w-5" />
+              </button>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20">
                 <Focus className="h-48 w-48 text-white" strokeWidth={1} />
               </div>
@@ -323,13 +335,25 @@ function RegisterPageInner() {
 
   const handleFileSelect = (e) => {
     const file = e.target.files?.[0];
+    // Reset the input immediately so picking the SAME file again still fires
+    // onChange — essential for re-uploading after a rejected photo.
+    e.target.value = "";
     if (!file) return;
-    if (!consentGiven) { showError("Accept the privacy notice first."); e.target.value = ""; return; }
+    if (!consentGiven) { showError("Accept the privacy notice first."); return; }
     if (!file.type.startsWith("image/")) { showError("Please select an image file."); return; }
     if (imagePreview) URL.revokeObjectURL(imagePreview);
     stopCamera();
     setImage(file);
     setImagePreview(URL.createObjectURL(file));
+    setError("");
+  };
+
+  // Clear the current photo and return to the chooser (no camera auto-launch),
+  // so the guest can freely pick camera OR upload again after a wrong photo.
+  const clearCapture = () => {
+    if (imagePreview) { URL.revokeObjectURL(imagePreview); setImagePreview(""); }
+    setImage(null);
+    stopCamera();
     setError("");
   };
 
@@ -419,6 +443,7 @@ function RegisterPageInner() {
     onReset: resetCapture,
     onStartCamera: startCamera,
     onFileSelect: handleFileSelect,
+    onClear: clearCapture,
   };
 
   // ── Main Layout ────────────────────────────────────────────────────────────

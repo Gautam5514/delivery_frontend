@@ -10,28 +10,28 @@ const steps = [
     title: "Admin creates the event",
     desc: "The host generates a unique QR code for their event in seconds from the Admin dashboard.",
     icon: QrCode,
-    image: "/images/feat_qr_scan.png"
+    image: "/images/feat_qr_scan.webp"
   },
   {
     id: 2,
     title: "Guests scan & snap a selfie",
     desc: "Guests scan the QR on tables, enter their email, and take a quick selfie to register their face data securely.",
     icon: Camera,
-    image: "/images/feat_selfie.png"
+    image: "/images/feat_selfie.webp"
   },
   {
     id: 3,
     title: "AI Auto-Matches Faces",
     desc: "After the event, the admin uploads all photos. Our AI instantly matches faces against registered selfies.",
     icon: Search,
-    image: "/images/feat_ai_match.png"
+    image: "/images/feat_ai_match.webp"
   },
   {
     id: 4,
     title: "Guests get notified & download",
     desc: "Guests receive an email with a secure link to view and download only the photos they are actually in.",
     icon: Download,
-    image: "/images/feat_ai_match.png"
+    image: "/images/feat_ai_match.webp"
   }
 ];
 

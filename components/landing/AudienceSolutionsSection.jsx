@@ -8,22 +8,22 @@ const solutions = [
   {
     title: "Event Planners",
     bg: "from-zinc-700 to-zinc-500",
-    image: "/images/card_wedding.png",
+    image: "/images/card_wedding.webp",
   },
   {
     title: "Photographers",
     bg: "from-zinc-700 to-zinc-500",
-    image: "/images/feat_camera_pro.png",
+    image: "/images/feat_camera_pro.webp",
   },
   {
     title: "Individual Hosts",
     bg: "from-zinc-700 to-zinc-500",
-    image: "/images/hero_birthday.png",
+    image: "/images/hero_birthday.webp",
   },
   {
     title: "Organisations",
     bg: "from-zinc-700 to-zinc-500",
-    image: "/images/hero_corporate.png",
+    image: "/images/hero_corporate.webp",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function AudienceSolutionsSection() {
           className="mb-10 flex items-center justify-center gap-3 text-center text-xl font-semibold sm:mb-12 sm:text-2xl md:text-4xl"
         >
           <Sparkles className="h-6 w-6 sm:h-7 sm:w-7" />
-          <h2>One Gopo - Many Solutions</h2>
+          <h2>One FaceDeliver - Many Solutions</h2>
         </motion.div>
 
         {/* 2-col grid on mobile/tablet → 4-col on lg */}

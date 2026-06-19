@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { FolderTree, ScanFace, Sparkles, Layers } from "lucide-react";
+import { FolderTree, ScanFace, Sparkles, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 
 const features = [
@@ -10,7 +10,7 @@ const features = [
     id: 1,
     title: "Facial Recognition",
     description:
-      "Gopo uses facial recognition to find photos of just you! It curates individual collections of people present.",
+      "FaceDeliver uses facial recognition to find photos of just you! It curates individual collections of people present.",
     icon: ScanFace,
   },
   {
@@ -22,10 +22,10 @@ const features = [
   },
   {
     id: 3,
-    title: "Unlimited Event Groups",
+    title: "No App Needed",
     description:
-      "You can create multiple event groups for easy browsing and organized curation.",
-    icon: Layers,
+      "Guests share and download wedding and event photos right in their browser — nothing to install from the App Store or Google Play. Just scan a QR code and go.",
+    icon: Globe,
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ export default function WhyChooseUsSection() {
                 Why Choose Us?
               </span>
               <h2 className="text-2xl font-extrabold text-slate-900 leading-tight sm:text-3xl sm:leading-tight md:text-4xl mb-4">
-                Gopo segregates thousands of photographs from an event so you
+                FaceDeliver segregates thousands of photographs from an event so you
                 <span className="relative inline-block ml-2 z-0">
                   don&apos;t have to!
                   <span className="absolute -bottom-1 left-0 h-2 w-full bg-zinc-300 -z-10 rounded-sm" />
@@ -143,7 +143,7 @@ function GraphicIllustration() {
         <div className="relative rounded-[24px] border-[5px] border-slate-900 bg-slate-900 overflow-hidden shadow-2xl rotate-[-3deg]">
           <div className="relative w-full" style={{ aspectRatio: "9/18" }}>
             <Image
-              src="/images/feat_ai_match.png"
+              src="/images/feat_ai_match.webp"
               alt="Gallery App"
               fill
               sizes="200px"
@@ -164,7 +164,7 @@ function GraphicIllustration() {
         <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
           <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 relative bg-slate-200 sm:w-8 sm:h-8">
             <Image
-              src="/images/card_wedding.png"
+              src="/images/card_wedding.webp"
               alt="Event"
               width={32}
               height={32}
@@ -189,7 +189,7 @@ function GraphicIllustration() {
         className="absolute bottom-[15px] left-[120px] w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden z-30 bg-slate-200 sm:bottom-[20px] sm:left-[150px] sm:w-24 sm:h-24"
       >
         <Image
-          src="/images/feat_selfie.png"
+          src="/images/feat_selfie.webp"
           alt="User"
           fill
           sizes="96px"

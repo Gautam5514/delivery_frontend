@@ -415,7 +415,7 @@ export default function AdminProfilePage() {
         <SectionLabel
           eyebrow="Privacy"
           title="Data &amp; privacy"
-          description="How Gopo handles your event data."
+          description="How FaceDeliver handles your event data."
         />
         <div className="space-y-2 p-6">
           {privacyItems.map(({ icon: Icon, title, body }) => (

@@ -62,14 +62,14 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
-              src="/G.png"
-              alt="Gopo logo"
+              src="/logo.webp"
+              alt="FaceDeliver logo"
               width={36}
               height={36}
               className="h-8 w-8 rounded-lg object-cover sm:h-9 sm:w-9"
             />
             <span className="text-base font-semibold tracking-[0.2em] text-zinc-900 sm:text-lg">
-              GOPO
+              FACEDELIVER
             </span>
           </Link>
 
@@ -97,7 +97,7 @@ export default function Navbar() {
                   <div className="grid grid-cols-[0.76fr_1.24fr] gap-2.5">
                     <div className="relative overflow-hidden rounded border border-white/50 bg-zinc-950 p-5 text-white shadow-inner">
                       <img
-                        src="/images/hero_photography.png"
+                        src="/images/hero_photography.webp"
                         alt="Event photography"
                         className="absolute inset-0 h-full w-full object-cover opacity-60"
                       />
@@ -221,14 +221,14 @@ export default function Navbar() {
                   className="flex items-center gap-2"
                 >
                   <Image
-                    src="/G.png"
-                    alt="Gopo logo"
+                    src="/logo.webp"
+                    alt="FaceDeliver logo"
                     width={32}
                     height={32}
                     className="h-8 w-8 rounded-lg object-cover"
                   />
                   <span className="text-base font-semibold tracking-[0.2em] text-zinc-900">
-                    GOPO
+                    FACEDELIVER
                   </span>
                 </Link>
                 <button

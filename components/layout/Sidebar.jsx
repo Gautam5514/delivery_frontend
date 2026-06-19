@@ -63,8 +63,8 @@ export default function Sidebar({
         >
           <div className="h-10 w-10 shrink-0 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200/80">
             <Image
-              src="/G.png"
-              alt="Gopo logo"
+              src="/logo.webp"
+              alt="FaceDeliver logo"
               width={40}
               height={40}
               className="h-full w-full object-cover"
@@ -77,7 +77,7 @@ export default function Sidebar({
                 : "opacity-100"
             }`}
           >
-            Gopo
+            FaceDeliver
           </span>
         </Link>
 

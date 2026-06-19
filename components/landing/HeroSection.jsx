@@ -8,28 +8,28 @@ import Link from "next/link";
 
 const heroSlides = [
   {
-    title: "Forgotten Place",
+    title: "AI Event Photo Delivery with Face Recognition",
     description:
-      "Discover a cinematic experience for your events. High-end visual identity, premium storytelling, and precise AI-powered photo delivery in one polished platform.",
-    image: "/images/hero_wedding.png",
+      "FaceDeliver instantly delivers every guest their own photos using AI face matching. High-end galleries, QR-code access, and precise photo delivery in one polished platform.",
+    image: "/images/hero_wedding.webp",
   },
   {
-    title: "Frames That Feel Alive",
+    title: "Instant Wedding & Event Photo Sharing",
     description:
       "From camera-first event coverage to private guest galleries, deliver every moment with a refined, premium presentation.",
-    image: "/images/hero_photography.png",
+    image: "/images/hero_photography.webp",
   },
   {
-    title: "Crafted For Modern Photography",
+    title: "QR-Code Photo Galleries for Every Guest",
     description:
-      "Turn thousands of event shots into an elegant viewing flow with premium storytelling, search, and effortless sharing.",
-    image: "/images/hero_corporate.png",
+      "Turn thousands of event shots into an elegant viewing flow with AI search, face matching, and effortless sharing.",
+    image: "/images/hero_corporate.webp",
   },
   {
-    title: "Event Delivery, Upgraded",
+    title: "Automated Photo Delivery for Photographers",
     description:
       "Showcase cameras, creators, and final memories in a polished interface designed for studios, photographers, and guests.",
-    image: "/images/hero_birthday.png",
+    image: "/images/hero_birthday.webp",
   },
 ];
 

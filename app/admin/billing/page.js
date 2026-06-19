@@ -458,7 +458,7 @@ export default function BillingPage() {
         key: orderData.razorpayKeyId,
         amount: orderData.order.amount,
         currency: orderData.order.currency,
-        name: "Gopo Admin Billing",
+        name: "FaceDeliver Admin Billing",
         description: `${orderData.plan.name} plan`,
         order_id: orderData.order.id,
         prefill: {
@@ -554,7 +554,7 @@ export default function BillingPage() {
       <div className="flex items-start gap-3 rounded-2xl border border-zinc-100 bg-zinc-50 px-5 py-4">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
         <p className="text-xs leading-6 text-zinc-500">
-          Payments are processed securely via Razorpay. Gopo never stores your
+          Payments are processed securely via Razorpay. FaceDeliver never stores your
           card details. All plans are billed monthly with no lock-in — you can
           upgrade at any time and the new quota takes effect immediately.
         </p>

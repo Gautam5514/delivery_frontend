@@ -5,6 +5,7 @@ import PremiumFooter from "@/components/landing/PremiumFooter";
 import PhotographerWordmarkSection from "@/components/landing/PhotographerWordmarkSection";
 import { ArrowLeft, ArrowRight, CheckCircle2, Image as ImageIcon, Mail, QrCode } from "lucide-react";
 import { eventServices, serviceWorkflow } from "../serviceData";
+import { buildMetadata } from "../../seo.config";
 
 export function generateStaticParams() {
   return eventServices.map((service) => ({ slug: service.slug }));
@@ -13,10 +14,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const service = eventServices.find((item) => item.slug === slug);
-  return {
-    title: service ? `${service.title} | Gopo Services` : "Gopo Services",
-    description: service?.description || "Gopo event photo delivery services.",
-  };
+  if (!service) {
+    return buildMetadata({
+      title: "Event Photo Delivery Services",
+      description: "FaceDeliver event photo delivery services.",
+      path: "/services",
+    });
+  }
+  return buildMetadata({
+    title: `${service.title} Photo Delivery – AI Face Matching`,
+    description: service.description,
+    path: `/services/${service.slug}`,
+    image: service.image,
+  });
 }
 
 export default async function ServiceDetailsPage({ params }) {

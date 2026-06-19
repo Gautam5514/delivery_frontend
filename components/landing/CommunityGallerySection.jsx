@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const floatingCards = [
   {
     caption: "You uploaded 59 photos to the Day Trip group",
-    image: "/images/card_festival.png",
+    image: "/images/card_festival.webp",
     className:
       "left-4 top-20 -rotate-6 sm:left-8 md:left-12 lg:left-16 lg:top-24",
     width: "w-44 sm:w-48 md:w-52",
@@ -17,7 +17,7 @@ const floatingCards = [
   },
   {
     caption: "We've found new photos!",
-    image: "/images/feat_selfie.png",
+    image: "/images/feat_selfie.webp",
     className:
       "left-44 top-6 rotate-3 sm:left-56 md:left-72 lg:left-80 lg:top-8",
     width: "w-40 sm:w-44 md:w-48",
@@ -28,7 +28,7 @@ const floatingCards = [
   },
   {
     caption: "5 people have joined the Office group",
-    image: "/images/card_corporate.png",
+    image: "/images/card_corporate.webp",
     className:
       "left-1/2 top-44 -translate-x-1/2 -rotate-1 sm:top-40 md:top-48 lg:top-52",
     width: "w-48 sm:w-56 md:w-60",
@@ -39,7 +39,7 @@ const floatingCards = [
   },
   {
     caption: "Akshay has added 32 new photos to the Event group",
-    image: "/images/hero_corporate.png",
+    image: "/images/hero_corporate.webp",
     className:
       "right-36 top-20 rotate-[-5deg] sm:right-44 md:right-56 lg:right-72 lg:top-16",
     width: "w-40 sm:w-44 md:w-48",
@@ -50,7 +50,7 @@ const floatingCards = [
   },
   {
     caption: "Jai created the Birthday group!",
-    image: "/images/card_birthday.png",
+    image: "/images/card_birthday.webp",
     className:
       "right-4 top-2 rotate-[7deg] sm:right-8 md:right-16 lg:right-20 lg:top-0",
     width: "w-36 sm:w-40 md:w-44",
@@ -61,7 +61,7 @@ const floatingCards = [
   },
   {
     caption: "We've found common photos of your group",
-    image: "/images/card_college.png",
+    image: "/images/card_college.webp",
     className:
       "right-2 top-40 rotate-[6deg] sm:right-6 md:right-10 lg:right-12 lg:top-48",
     width: "w-44 sm:w-48 md:w-52",

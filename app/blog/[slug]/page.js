@@ -6,6 +6,7 @@ import PhotographerWordmarkSection from "@/components/landing/PhotographerWordma
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, Clock } from "lucide-react";
 import { allBlogPosts } from "../posts";
 import BlogDetailClient from "./BlogDetailClient";
+import { buildMetadata, SITE_URL, SITE_NAME } from "../../seo.config";
 
 export function generateStaticParams() {
   return allBlogPosts.map((post) => ({ slug: post.slug }));
@@ -15,10 +16,12 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = allBlogPosts.find((item) => item.slug === slug);
   if (!post) return { title: "Blog Not Found" };
-  return {
-    title: `${post.title} | Gopo Blog`,
+  return buildMetadata({
+    title: post.title,
     description: post.excerpt,
-  };
+    path: `/blog/${post.slug}`,
+    image: post.cover,
+  });
 }
 
 function getInitials(name) {
@@ -61,8 +64,32 @@ export default async function BlogDetailPage({ params }) {
   const catClass =
     categoryColors[post.category] ?? "bg-zinc-100 text-zinc-700 border-zinc-200";
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.cover
+      ? post.cover.startsWith("http")
+        ? post.cover
+        : `${SITE_URL}${post.cover}`
+      : undefined,
+    datePublished: post.date,
+    author: { "@type": "Organization", name: post.author || SITE_NAME },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.webp` },
+    },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+  };
+
   return (
     <div className="min-h-screen bg-white text-zinc-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Navbar />
 
       {/* Reading progress bar — client only */}
@@ -128,7 +155,7 @@ export default async function BlogDetailPage({ params }) {
                   <p className="text-sm font-semibold text-zinc-900">
                     {post.author}
                   </p>
-                  <p className="text-xs text-zinc-400">Gopo Team</p>
+                  <p className="text-xs text-zinc-400">FaceDeliver Team</p>
                 </div>
               </div>
 
@@ -180,7 +207,7 @@ export default async function BlogDetailPage({ params }) {
                 Tagged
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {[post.category, "Gopo", "Event Photography"].map((tag) => (
+                {[post.category, "FaceDeliver", "Event Photography"].map((tag) => (
                   <span
                     key={tag}
                     className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-xs font-medium text-zinc-600"
@@ -201,7 +228,7 @@ export default async function BlogDetailPage({ params }) {
                   Written by {post.author}
                 </p>
                 <p className="mt-1 text-sm leading-6 text-zinc-500">
-                  Part of the Gopo team, crafting guides on AI event photo
+                  Part of the FaceDeliver team, crafting guides on AI event photo
                   delivery, workflows, and guest experience.
                 </p>
               </div>
@@ -270,7 +297,7 @@ export default async function BlogDetailPage({ params }) {
                 Get articles like this.
               </h3>
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                Weekly insights from the Gopo team.
+                Weekly insights from the FaceDeliver team.
               </p>
               <div className="mt-5 space-y-2.5">
                 <input

@@ -31,7 +31,7 @@ const GALLERY_ITEMS = [
     event: "Sharma Wedding — Jaipur",
     photos: 2840,
     guests: 412,
-    cover: "/images/about_mission_bg.png",
+    cover: "/images/about_mission_bg.webp",
     aspect: "tall",
   },
   {
@@ -40,7 +40,7 @@ const GALLERY_ITEMS = [
     event: "TechSummit 2026 — Delhi",
     photos: 1560,
     guests: 890,
-    cover: "/images/hero_corporate.png",
+    cover: "/images/hero_corporate.webp",
     aspect: "wide",
   },
   {
@@ -49,7 +49,7 @@ const GALLERY_ITEMS = [
     event: "Farewell Night — IIT Bombay",
     photos: 3200,
     guests: 1100,
-    cover: "/images/hero_college.png",
+    cover: "/images/hero_college.webp",
     aspect: "square",
   },
   {
@@ -58,7 +58,7 @@ const GALLERY_ITEMS = [
     event: "Mehta & Priya — Udaipur Palace",
     photos: 4100,
     guests: 680,
-    cover: "/images/card_wedding.png",
+    cover: "/images/card_wedding.webp",
     aspect: "tall",
   },
   {
@@ -67,7 +67,7 @@ const GALLERY_ITEMS = [
     event: "Annual Gala — Mumbai",
     photos: 980,
     guests: 320,
-    cover: "/images/card_festival.png",
+    cover: "/images/card_festival.webp",
     aspect: "wide",
   },
   {
@@ -76,7 +76,7 @@ const GALLERY_ITEMS = [
     event: "Product Launch — Bangalore",
     photos: 740,
     guests: 220,
-    cover: "/images/hero_birthday.png",
+    cover: "/images/hero_birthday.webp",
     aspect: "square",
   },
   {
@@ -85,7 +85,7 @@ const GALLERY_ITEMS = [
     event: "Annual Day — DPS Vasant Kunj",
     photos: 1890,
     guests: 540,
-    cover: "/images/card_school.png",
+    cover: "/images/card_school.webp",
     aspect: "wide",
   },
   {
@@ -94,7 +94,7 @@ const GALLERY_ITEMS = [
     event: "Cultural Fest — NIT Trichy",
     photos: 2600,
     guests: 1400,
-    cover: "/images/card_festival.png",
+    cover: "/images/card_festival.webp",
     aspect: "tall",
   },
   {
@@ -103,7 +103,7 @@ const GALLERY_ITEMS = [
     event: "Award Night — Hyderabad",
     photos: 1120,
     guests: 280,
-    cover: "/images/feat_qr_scan.png",
+    cover: "/images/feat_qr_scan.webp",
     aspect: "square",
   },
 ];
@@ -117,7 +117,7 @@ const EVENT_CATEGORIES = [
     tagline: "Every moment, every guest.",
     description:
       "From haldi to reception — every frame delivered privately to each guest within hours. No shared albums, no chaos.",
-    cover: "/images/card_wedding.png",
+    cover: "/images/card_wedding.webp",
     stat: "4,000+ photos · 98% match rate",
   },
   {
@@ -125,7 +125,7 @@ const EVENT_CATEGORIES = [
     tagline: "On-brand. On-time.",
     description:
       "Conferences, award nights, and product launches — delivered with clean UI that matches your company's standards.",
-    cover: "/images/card_corporate.png",
+    cover: "/images/card_corporate.webp",
     stat: "500–5,000 guests · Same-day delivery",
   },
   {
@@ -133,7 +133,7 @@ const EVENT_CATEGORIES = [
     tagline: "Memories for everyone.",
     description:
       "Fests, farewells, annual days — students and parents get personal galleries without sorting through thousands of shots.",
-    cover: "/images/card_college.png",
+    cover: "/images/card_college.webp",
     stat: "1,000–5,000 attendees · QR check-in",
   },
 ];
@@ -261,12 +261,12 @@ export default function ShowcaseGalleryPage() {
           {/* Floating photo strips — decorative */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
             <div className="absolute left-4 top-24 flex flex-col gap-3 -rotate-6">
-              {["/images/card_wedding.png", "/images/about_mission_bg.png", "/images/hero_college.png"].map((src) => (
+              {["/images/card_wedding.webp", "/images/about_mission_bg.webp", "/images/hero_college.webp"].map((src) => (
                 <img key={src} src={src} alt="" className="h-28 w-24 rounded-xl object-cover" />
               ))}
             </div>
             <div className="absolute right-4 top-12 flex flex-col gap-3 rotate-6">
-              {["/images/hero_corporate.png", "/images/feat_qr_scan.png", "/images/card_festival.png"].map((src) => (
+              {["/images/hero_corporate.webp", "/images/feat_qr_scan.webp", "/images/card_festival.webp"].map((src) => (
                 <img key={src} src={src} alt="" className="h-28 w-24 rounded-xl object-cover" />
               ))}
             </div>
@@ -275,7 +275,7 @@ export default function ShowcaseGalleryPage() {
           <div className="relative mx-auto max-w-4xl pt-16 text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-400">
               <Sparkles className="h-3.5 w-3.5 text-white" />
-              Gopo Gallery Showcase
+              FaceDeliver Gallery Showcase
             </span>
 
             <h1 className="mt-7 text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
@@ -285,7 +285,7 @@ export default function ShowcaseGalleryPage() {
             </h1>
 
             <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-zinc-400">
-              See how Gopo delivers AI-matched, private photo galleries for weddings,
+              See how FaceDeliver delivers AI-matched, private photo galleries for weddings,
               corporate events, college fests, and more — all from a single QR scan.
             </p>
 
@@ -423,7 +423,7 @@ export default function ShowcaseGalleryPage() {
               A gallery for every occasion.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-500">
-              Whether it's an intimate wedding or a 5,000-person conference, Gopo
+              Whether it's an intimate wedding or a 5,000-person conference, FaceDeliver
               handles the entire photo delivery pipeline automatically.
             </p>
           </div>
@@ -470,7 +470,7 @@ export default function ShowcaseGalleryPage() {
                 From QR scan to personal gallery.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-500">
-                Gopo handles everything automatically — your guests just scan once and
+                FaceDeliver handles everything automatically — your guests just scan once and
                 receive their private gallery within hours.
               </p>
             </div>
@@ -593,12 +593,12 @@ export default function ShowcaseGalleryPage() {
                     {/* Masonry grid mockup */}
                     <div className="grid grid-cols-3 gap-1 p-2">
                       {[
-                        "/images/card_wedding.png",
-                        "/images/about_mission_bg.png",
-                        "/images/hero_college.png",
-                        "/images/card_festival.png",
-                        "/images/hero_corporate.png",
-                        "/images/feat_qr_scan.png",
+                        "/images/card_wedding.webp",
+                        "/images/about_mission_bg.webp",
+                        "/images/hero_college.webp",
+                        "/images/card_festival.webp",
+                        "/images/hero_corporate.webp",
+                        "/images/feat_qr_scan.webp",
                       ].map((src, idx) => (
                         <div
                           key={src}
@@ -780,7 +780,7 @@ export default function ShowcaseGalleryPage() {
             </h2>
             <p className="relative mx-auto mt-5 max-w-xl text-lg leading-8 text-zinc-400">
               Set up your first event in minutes. No technical knowledge needed —
-              just upload photos and let Gopo handle everything.
+              just upload photos and let FaceDeliver handle everything.
             </p>
             <div className="relative mt-10 flex flex-wrap justify-center gap-4">
               <Link

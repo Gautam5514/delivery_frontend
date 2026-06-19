@@ -9,61 +9,61 @@ const testimonials = [
     name: "Sarah & David",
     role: "Bride & Groom",
     content: "We hated the idea of chasing people to send them photos. This app did it all automatically. Our guests were mind-blown when they got their pictures the very next day!",
-    avatar: "/images/card_wedding.png",
+    avatar: "/images/card_wedding.webp",
   },
   {
     name: "Michael T.",
     role: "Event Guest",
     content: "Usually I never see the photos taken of me at events. With this, I got a text the morning after with 12 amazing HQ photos of me and my wife. Absolutely brilliant.",
-    avatar: "/images/feat_selfie.png",
+    avatar: "/images/feat_selfie.webp",
   },
   {
     name: "Jessica Lee",
     role: "Event Photographer",
     content: "It saves me hours of admin work. I just give the couple the bulk folder, they upload it here, and their guests are sorted. I've started recommending it to all my clients.",
-    avatar: "/images/feat_camera_pro.png",
+    avatar: "/images/feat_camera_pro.webp",
   },
   {
     name: "Emily Chen",
     role: "Event Planner",
     content: "I manage 50+ events a year. The facial recognition accuracy is scary good. It adds a premium tech touch to my events that clients absolutely love paying for.",
-    avatar: "/images/feat_selfie.png",
+    avatar: "/images/feat_selfie.webp",
   },
   {
     name: "Mark Robinson",
     role: "Corporate Host",
-    content: "We used Gopo for our annual tech summit. Distributing 5,000+ photos to 800 attendees used to take weeks. With this, it was done before the closing keynote.",
-    avatar: "/images/card_corporate.png",
+    content: "We used FaceDeliver for our annual tech summit. Distributing 5,000+ photos to 800 attendees used to take weeks. With this, it was done before the closing keynote.",
+    avatar: "/images/card_corporate.webp",
   },
   {
     name: "Lisa Kudrow",
     role: "Birthday Host",
     content: "Organized my husband's 40th. Everyone took selfies to register and boom—custom albums for everyone. No more WhatsApp groups compressing our memories!",
-    avatar: "/images/card_birthday.png",
+    avatar: "/images/card_birthday.webp",
   },
   {
     name: "James & Alisha",
     role: "Newlyweds",
     content: "The privacy settings were a big deal for us. We didn't want a public link. Knowing guests could only see their own photos made everyone feel comfortable.",
-    avatar: "/images/card_wedding.png",
+    avatar: "/images/card_wedding.webp",
   },
   {
     name: "Tom H.",
     role: "Festival Organizer",
     content: "Handled massive volume without breaking a sweat. The 'One Shot Upload' feature is a lifesaver when you have terabytes of data from multiple shooters.",
-    avatar: "/images/card_festival.png",
+    avatar: "/images/card_festival.webp",
   },
   {
     name: "Sophie V.",
     role: "Event Guest",
     content: "I didn't even know half these photos existed! It found candid shots of me dancing that I will cherish forever. Such a cool surprise to wake up to.",
-    avatar: "/images/card_college.png",
+    avatar: "/images/card_college.webp",
   },
   {
     name: "Ryan G.",
     role: "Freelance Photographer",
     content: "My print sales actually went up because people got their digital previews so fast. They were excited and ready to buy frames immediately.",
-    avatar: "/images/feat_camera_pro.png",
+    avatar: "/images/feat_camera_pro.webp",
   },
 ];
 
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
         </h2>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
           From intimate events to massive corporate events, see why people trust
-          Gopo to deliver their memories.
+          FaceDeliver to deliver their memories.
         </p>
       </div>
 

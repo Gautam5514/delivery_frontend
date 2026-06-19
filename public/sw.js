@@ -1,4 +1,4 @@
-// Gopo service worker — minimal shell required for Android PWA install prompt.
+// FaceDeliver service worker — minimal shell required for Android PWA install prompt.
 // Strategy: network-first for all requests (always fresh data), with a
 // graceful offline fallback for navigation requests only.
 

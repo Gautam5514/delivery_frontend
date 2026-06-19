@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Apple, Play } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Globe, QrCode } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,18 +17,27 @@ export default function Footer() {
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
             Ready to capture every moment?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-zinc-600">
-            Join thousands of users who trust Gopo to sort, share, and secure memories in original quality.
+          <p className="mx-auto mb-3 max-w-2xl text-lg text-zinc-600">
+            Join thousands of users who trust FaceDeliver to sort, share, and secure memories in original quality.
+          </p>
+          <p className="mx-auto mb-8 max-w-2xl text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            No app to download · Works in any browser
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <button className="flex items-center justify-center gap-3 rounded-full bg-zinc-900 px-6 py-3.5 font-bold text-white transition hover:bg-black">
-              <Apple size={20} className="fill-current" />
-              <span>App Store</span>
-            </button>
-            <button className="flex items-center justify-center gap-3 rounded-full border border-zinc-300 bg-white px-6 py-3.5 font-bold text-zinc-900 transition hover:bg-zinc-100">
-              <Play size={20} className="fill-current" />
-              <span>Google Play</span>
-            </button>
+            <Link
+              href="/register"
+              className="flex items-center justify-center gap-3 rounded-full bg-zinc-900 px-6 py-3.5 font-bold text-white transition hover:bg-black"
+            >
+              <Globe size={20} />
+              <span>Share Photos Free</span>
+            </Link>
+            <Link
+              href="/how-it-works"
+              className="flex items-center justify-center gap-3 rounded-full border border-zinc-300 bg-white px-6 py-3.5 font-bold text-zinc-900 transition hover:bg-zinc-100"
+            >
+              <QrCode size={20} />
+              <span>See How It Works</span>
+            </Link>
           </div>
         </div>
 
@@ -36,13 +45,13 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <div className="mb-6 flex items-center gap-2">
               <Image
-                src="/G.png"
-                alt="Gopo logo"
+                src="/logo.webp"
+                alt="FaceDeliver logo"
                 width={40}
                 height={40}
                 className="h-10 w-10 rounded-lg object-cover"
               />
-              <span className="text-2xl font-bold tracking-tight text-zinc-900">Gopo</span>
+              <span className="text-2xl font-bold tracking-tight text-zinc-900">FaceDeliver</span>
             </div>
             <p className="mb-6 max-w-sm leading-relaxed text-zinc-600">
               The smartest AI-powered photo sharing platform. Memories stay sorted, secure, and high-quality.
@@ -90,7 +99,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-zinc-600">
                 <Mail className="h-5 w-5 shrink-0 text-zinc-500" />
-                <span className="cursor-pointer transition-colors hover:text-zinc-900">support@Gopo.com</span>
+                <span className="cursor-pointer transition-colors hover:text-zinc-900">support@facedeliver.shop</span>
               </li>
             </ul>
           </div>
@@ -98,7 +107,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 pt-8 md:flex-row">
           <p className="text-center text-sm text-zinc-500 md:text-left">
-            &copy; {new Date().getFullYear()} Gopo. All rights reserved.
+            &copy; {new Date().getFullYear()} FaceDeliver. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm font-medium text-zinc-500">
             <Link href="/privacy" className="transition-colors hover:text-zinc-900">Privacy Policy</Link>

@@ -7,6 +7,14 @@ import {
   StaticPageHighlights,
   StaticPageCallout,
 } from "@/components/landing/StaticPageSections";
+import { buildMetadata } from "../seo.config";
+
+export const metadata = buildMetadata({
+  title: "About FaceDeliver – AI Event Photo Delivery Platform",
+  description:
+    "Learn how FaceDeliver helps photographers and event organizers deliver photos to every guest automatically with AI face recognition and QR-code galleries.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -19,7 +27,7 @@ export default function AboutPage() {
           <StaticPageHero
             eyebrow="About"
             title="Building smarter photo experiences for every event"
-            description="Gopo helps hosts, guests, and photographers discover and deliver memories with fast AI face matching and private sharing."
+            description="FaceDeliver helps hosts, guests, and photographers discover and deliver memories with fast AI face matching and private sharing."
             primaryHref="/register"
             primaryLabel="Join Now"
             secondaryHref="/services"

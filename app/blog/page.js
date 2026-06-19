@@ -47,7 +47,7 @@ export default function BlogPage() {
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-500 shadow-sm">
                   <Sparkles className="h-3.5 w-3.5 text-zinc-800" />
-                  Gopo Journal
+                  FaceDeliver Journal
                 </span>
                 <h1 className="mt-6 text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
                   Ideas for smarter
@@ -59,7 +59,7 @@ export default function BlogPage() {
               <div className="max-w-sm shrink-0">
                 <p className="text-base leading-7 text-zinc-600">
                   Premium guides on AI matching, event workflows, privacy, and
-                  guest gallery experiences — crafted by the Gopo team.
+                  guest gallery experiences — crafted by the FaceDeliver team.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-5 text-sm text-zinc-500">
                   <span className="flex items-center gap-1.5">
@@ -250,7 +250,7 @@ export default function BlogPage() {
               Stay in the loop
             </span>
             <h2 className="relative mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Get the latest from Gopo Journal.
+              Get the latest from FaceDeliver Journal.
             </h2>
             <p className="relative mt-4 mx-auto max-w-md text-base leading-7 text-zinc-400">
               Premium insights on AI photo delivery, event workflows, and guest

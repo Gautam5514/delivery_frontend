@@ -4,6 +4,14 @@ import PremiumFooter from "@/components/landing/PremiumFooter";
 import PhotographerWordmarkSection from "@/components/landing/PhotographerWordmarkSection";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { eventServices, serviceWorkflow } from "./serviceData";
+import { buildMetadata } from "../seo.config";
+
+export const metadata = buildMetadata({
+  title: "Event Photo Delivery Services – Weddings, Schools, Corporate",
+  description:
+    "AI face-recognition photo delivery for weddings, schools, college fests, corporate events, birthdays and festivals. QR-code galleries with private guest downloads.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

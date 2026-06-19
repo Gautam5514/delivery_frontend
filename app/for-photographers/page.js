@@ -6,6 +6,14 @@ import {
   StaticPageHighlights,
   StaticPageCallout,
 } from "@/components/landing/StaticPageSections";
+import { buildMetadata } from "../seo.config";
+
+export const metadata = buildMetadata({
+  title: "FaceDeliver for Photographers – Automated Client Photo Delivery",
+  description:
+    "Stop sorting photos manually. FaceDeliver's AI face recognition delivers galleries to every client and guest automatically, so photographers save hours per event.",
+  path: "/for-photographers",
+});
 
 export default function ForPhotographersPage() {
   return (
@@ -16,7 +24,7 @@ export default function ForPhotographersPage() {
           <StaticPageHero
             eyebrow="For Photographers"
             title="A cleaner delivery workflow for modern event teams"
-            description="Photographers and studios can use Gopo to reduce album chaos, speed up guest delivery, and offer a more premium service after the event."
+            description="Photographers and studios can use FaceDeliver to reduce album chaos, speed up guest delivery, and offer a more premium service after the event."
             primaryHref="/services"
             primaryLabel="View Services"
             secondaryHref="/contact"
@@ -24,7 +32,7 @@ export default function ForPhotographersPage() {
           />
 
           <StaticPageHighlights
-            heading="Why photographers use Gopo"
+            heading="Why photographers use FaceDeliver"
             items={[
               {
                 title: "Post-Event Efficiency",
@@ -79,7 +87,7 @@ export default function ForPhotographersPage() {
 
           <StaticPageCallout
             title="Want to offer this as part of your event package?"
-            description="Use Gopo as a premium upsell for hosts who want a smoother and more personal photo delivery experience."
+            description="Use FaceDeliver as a premium upsell for hosts who want a smoother and more personal photo delivery experience."
             ctaHref="/login"
             ctaLabel="Create Admin Account"
           />

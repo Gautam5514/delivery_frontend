@@ -4,11 +4,29 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowRight } from "lucide-react";
 
-// Fallback data in case you want to test immediately without your import
+// Fallback data in case you want to test immediately without your import.
+// These questions double as SEO content: they target real search phrases and
+// power the FAQPage structured data that can earn expandable Google results.
 const defaultFaqItems = [
+  {
+    q: "What is the best way to share wedding photos with all your guests?",
+    a: "The fastest way to share wedding photos is FaceDeliver. Upload the full gallery once, and every guest scans a QR code, takes a selfie, and instantly gets their own photos delivered through AI face recognition — no manual sorting and no group chats full of duplicates.",
+  },
+  {
+    q: "Do guests need to download an app to view their photos?",
+    a: "No. FaceDeliver works in any web browser on any phone or laptop. Guests just open a link or scan a QR code — there is nothing to download from the App Store or Google Play, so anyone can access their event photos in seconds.",
+  },
   {
     q: "How does the facial recognition work?",
     a: "Our AI scans the uploaded event photos and creates a unique face print. It then matches this against the selfie you upload, filtering thousands of photos down to just the ones you are in, with 99.9% accuracy.",
+  },
+  {
+    q: "Can I share event photos using a QR code?",
+    a: "Yes. Every event gets a unique QR code and link. Print it on a wedding card, display it at a corporate booth, or share it in a school group — guests scan once and reach their personalized photo gallery, no sign-up friction required.",
+  },
+  {
+    q: "How fast are event photos delivered to guests?",
+    a: "Once photos are uploaded, AI matching runs automatically and guests receive their personal gallery within minutes — not days or weeks. It works for weddings, school events, college fests, corporate conferences, and birthday parties.",
   },
   {
     q: "Is the photo quality preserved?",
@@ -19,8 +37,8 @@ const defaultFaqItems = [
     a: "Yes! Our 'One Shot Upload' feature allows you to drag and drop entire directory structures. We automatically organize sub-folders into specific event albums for you.",
   },
   {
-    q: "Is my data secure?",
-    a: "Security is our top priority. Photos are stored in encrypted cloud storage and are only accessible to guests who have the specific event link or QR code. You have full control over privacy settings.",
+    q: "Is my data secure and private?",
+    a: "Security is our top priority. Photos are stored in encrypted cloud storage and are only accessible to guests who have the specific event link or QR code. You have full control over privacy settings, and face data is deleted after the event.",
   },
 ];
 
@@ -28,9 +46,24 @@ export default function FaqSection({ faqItems = defaultFaqItems }) {
   // Removed TypeScript generic <number | null>
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <section id="faq" className="relative bg-white py-24 px-6 lg:px-8 overflow-hidden">
-      
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       {/* Background Decor: Subtle Blue Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-50/50 rounded-full blur-3xl -z-10 opacity-60" />
 

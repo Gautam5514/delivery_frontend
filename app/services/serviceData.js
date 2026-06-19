@@ -5,8 +5,8 @@ export const eventServices = [
     shortText: "Ceremony to reception",
     description:
       "Private AI-matched galleries for weddings, receptions, pre-wedding shoots, and family celebrations.",
-    image: "/images/hero_wedding.png",
-    accentImage: "/images/card_wedding.png",
+    image: "/images/hero_wedding.webp",
+    accentImage: "/images/card_wedding.webp",
     highlights: ["Guest QR registration", "Family-wise discovery", "Private downloads"],
   },
   {
@@ -15,8 +15,8 @@ export const eventServices = [
     shortText: "Annual days and trips",
     description:
       "Organized photo delivery for annual days, graduations, sports days, school trips, and classroom events.",
-    image: "/images/card_school.png",
-    accentImage: "/images/feat_qr_scan.png",
+    image: "/images/card_school.webp",
+    accentImage: "/images/feat_qr_scan.webp",
     highlights: ["Student-specific galleries", "Secure parent access", "Bulk album uploads"],
   },
   {
@@ -25,8 +25,8 @@ export const eventServices = [
     shortText: "Fests and farewells",
     description:
       "Fast face-matched galleries for college festivals, farewells, convocations, clubs, and campus events.",
-    image: "/images/hero_college.png",
-    accentImage: "/images/card_college.png",
+    image: "/images/hero_college.webp",
+    accentImage: "/images/card_college.webp",
     highlights: ["High-volume matching", "Event code sharing", "Instant gallery access"],
   },
   {
@@ -35,8 +35,8 @@ export const eventServices = [
     shortText: "Conferences and offsites",
     description:
       "Premium delivery for conferences, award nights, product launches, team offsites, and leadership events.",
-    image: "/images/hero_corporate.png",
-    accentImage: "/images/card_corporate.png",
+    image: "/images/hero_corporate.webp",
+    accentImage: "/images/card_corporate.webp",
     highlights: ["Branded delivery", "Admin reporting", "Controlled access"],
   },
   {
@@ -45,8 +45,8 @@ export const eventServices = [
     shortText: "Milestone celebrations",
     description:
       "Simple private photo sharing for birthdays, baby showers, anniversaries, and intimate family events.",
-    image: "/images/hero_birthday.png",
-    accentImage: "/images/card_birthday.png",
+    image: "/images/hero_birthday.webp",
+    accentImage: "/images/card_birthday.webp",
     highlights: ["Easy guest onboarding", "Personal galleries", "Download-ready photos"],
   },
   {
@@ -55,8 +55,8 @@ export const eventServices = [
     shortText: "Clubs and gatherings",
     description:
       "Scalable photo discovery for cultural nights, community festivals, clubs, public gatherings, and social events.",
-    image: "/images/card_festival.png",
-    accentImage: "/images/about_mission_bg.png",
+    image: "/images/card_festival.webp",
+    accentImage: "/images/about_mission_bg.webp",
     highlights: ["Crowd-friendly QR flow", "Large album support", "Private event access"],
   },
 ];

@@ -103,7 +103,7 @@ export default function SuperadminLoginPage() {
                       value={form.email}
                       onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
                       className="w-full rounded-2xl border border-zinc-300 bg-white py-3.5 pl-11 pr-4 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                      placeholder="superadmin@gopo.com"
+                      placeholder="superadmin@facedeliver.shop"
                     />
                   </div>
                 </div>
