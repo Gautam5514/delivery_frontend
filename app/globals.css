@@ -24,6 +24,15 @@ a {
   transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 }
 
+/* Hide scrollbars on horizontal scroll strips (mobile event chips, card rows) */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Override browser autofill background — prevents the white/blue flash on dark inputs */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

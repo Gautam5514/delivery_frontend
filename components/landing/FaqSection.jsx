@@ -57,7 +57,7 @@ export default function FaqSection({ faqItems = defaultFaqItems }) {
   };
 
   return (
-    <section id="faq" className="relative bg-white py-24 px-6 lg:px-8 overflow-hidden">
+    <section id="faq" className="relative bg-white py-16 px-4 sm:py-24 sm:px-6 lg:px-8 overflow-hidden">
 
       <script
         type="application/ld+json"
@@ -84,7 +84,7 @@ export default function FaqSection({ faqItems = defaultFaqItems }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
+            className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
           >
             Frequently Asked Questions
           </motion.h2>
@@ -129,7 +129,7 @@ export default function FaqSection({ faqItems = defaultFaqItems }) {
               <h3 className="text-2xl font-bold mb-2">Still have questions?</h3>
               <p className="text-slate-400">Can&apos;t find the answer you&apos;re looking for? Please chat to our friendly team.</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                <a
                 href="/admin"
                 className="group flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-slate-900 transition-all hover:bg-blue-50 hover:scale-105 active:scale-95"
@@ -164,9 +164,9 @@ function AccordionItem({ question, answer, isOpen, onClick }) {
     >
       <button
         onClick={onClick}
-        className="flex w-full items-center justify-between p-6 text-left"
+        className="flex w-full items-center justify-between p-5 text-left sm:p-6"
       >
-        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-blue-600' : 'text-slate-800'}`}>
+        <span className={`text-base font-bold transition-colors sm:text-lg ${isOpen ? 'text-blue-600' : 'text-slate-800'}`}>
           {question}
         </span>
         <span className={`ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${isOpen ? 'bg-blue-600 border-blue-600 text-white rotate-180' : 'bg-white border-slate-200 text-slate-400'}`}>
@@ -182,7 +182,7 @@ function AccordionItem({ question, answer, isOpen, onClick }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 pt-0 text-slate-600 leading-relaxed text-[15px]">
+            <div className="px-5 pb-5 pt-0 text-slate-600 leading-relaxed text-[15px] sm:px-6 sm:pb-6">
               {answer}
             </div>
           </motion.div>

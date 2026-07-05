@@ -94,7 +94,9 @@ export const viewport = {
   themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  // No maximumScale cap — guests must be able to pinch-zoom their photos,
+  // and locking zoom is an accessibility failure on iOS/Android.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }) {

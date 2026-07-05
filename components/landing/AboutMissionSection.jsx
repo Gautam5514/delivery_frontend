@@ -68,24 +68,24 @@ export default function AboutMissionSection() {
               return (
                 <div
                   key={item.title}
-                  className={`flex flex-col sm:flex-row items-start sm:items-center gap-6 p-10 lg:px-12 lg:py-14
+                  className={`flex flex-col sm:flex-row items-start sm:items-center gap-5 p-6 sm:gap-6 sm:p-10 lg:px-12 lg:py-14
                     ${isTopRow ? "border-b border-sky-100" : ""}
                     ${isLeftCol ? "md:border-r border-sky-100" : ""}
                   `}
                 >
                   {/* Icon Circle */}
                   <div
-                    className={`flex h-[88px] w-[88px] shrink-0 items-center justify-center rounded-full ${item.bgColor}`}
+                    className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full sm:h-[88px] sm:w-[88px] ${item.bgColor}`}
                   >
-                    <Icon className="h-[38px] w-[38px] text-[#1a2b3c]" strokeWidth={1.25} />
+                    <Icon className="h-7 w-7 text-[#1a2b3c] sm:h-[38px] sm:w-[38px]" strokeWidth={1.25} />
                   </div>
                   
                   {/* Text Content */}
                   <div>
-                    <h3 className="text-[28px] font-bold tracking-tight text-zinc-900 mb-2 font-serif">
+                    <h3 className="text-xl sm:text-[28px] font-bold tracking-tight text-zinc-900 mb-2 font-serif">
                       {item.title}
                     </h3>
-                    <p className="text-lg text-zinc-700 leading-snug font-sans">
+                    <p className="text-base sm:text-lg text-zinc-700 leading-snug font-sans">
                       {item.description}
                     </p>
                   </div>

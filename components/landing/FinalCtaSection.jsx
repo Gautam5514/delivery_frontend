@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function FinalCtaSection() {
     return (
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative py-20 sm:py-32 overflow-hidden">
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-96 rounded-full bg-zinc-200/70 blur-[120px] pointer-events-none" />
 
@@ -20,11 +20,11 @@ export default function FinalCtaSection() {
                         <Sparkles className="h-8 w-8 text-zinc-700" />
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-zinc-900">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6 text-zinc-900">
                         Ready to upgrade your event?
                     </h2>
 
-                    <p className="text-xl text-zinc-600 mb-10 max-w-2xl mx-auto">
+                    <p className="text-lg sm:text-xl text-zinc-600 mb-10 max-w-2xl mx-auto">
                         Stop sharing generic Google Drive links. Start delivering a magical, personalized photo experience today.
                     </p>
 

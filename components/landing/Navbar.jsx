@@ -19,14 +19,15 @@ const mobileNavLinks = [
 export default function Navbar() {
   const [showOfferBanner, setShowOfferBanner] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const headerOffsetClass = showOfferBanner ? "h-[112px]" : "h-[72px]";
 
   const offerText =
     "All-time 50% offer: Get 50% off on all plans and launch your event with premium QR photo delivery today.";
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-200/80 bg-white/88 shadow-[0_12px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl">
+      {/* Sticky (not fixed) so the page content offset always matches the real
+          header height — no hardcoded spacer that drifts across breakpoints */}
+      <header className="sticky inset-x-0 top-0 z-50 border-b border-zinc-200/80 bg-white/88 shadow-[0_12px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl">
         {/* ── Offer banner ── */}
         {showOfferBanner ? (
           <div className="border-b border-zinc-200 bg-zinc-950 text-white">
@@ -68,7 +69,7 @@ export default function Navbar() {
               height={36}
               className="h-8 w-8 rounded-lg object-cover sm:h-9 sm:w-9"
             />
-            <span className="text-base font-semibold tracking-[0.2em] text-zinc-900 sm:text-lg">
+            <span className="text-sm font-semibold tracking-[0.12em] text-zinc-900 sm:text-lg sm:tracking-[0.2em]">
               FACEDELIVER
             </span>
           </Link>
@@ -171,7 +172,7 @@ export default function Navbar() {
             </a>
             <a
               href="/admin"
-              className="rounded border border-zinc-900/90 bg-zinc-900 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-black sm:px-4 sm:text-xs sm:tracking-[0.15em]"
+              className="whitespace-nowrap rounded border border-zinc-900/90 bg-zinc-900 px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-black sm:px-4 sm:text-xs sm:tracking-[0.15em]"
             >
               Create Event
             </a>
@@ -302,12 +303,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-
-      {/* Spacer so content doesn't sit under the fixed header */}
-      <div
-        className={`transition-[height] duration-300 ease-out ${headerOffsetClass}`}
-        aria-hidden="true"
-      />
     </>
   );
 }

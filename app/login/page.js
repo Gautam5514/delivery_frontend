@@ -123,7 +123,7 @@ export default function AuthPage() {
     : !isGuest && mode === "signup" ? UserPlus : LogIn;
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[#090b0f] text-white">
+    <div className="relative h-dvh overflow-hidden bg-[#090b0f] text-white">
 
       {/* Subtle dot-grid background */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:28px_28px]" />
@@ -185,10 +185,11 @@ export default function AuthPage() {
         </aside>
 
         {/* ── RIGHT FORM PANEL ────────────────────────────────────────────── */}
-        <main className="flex flex-1 flex-col items-center justify-center px-6 py-8 overflow-y-auto">
+        <main className="flex flex-1 flex-col items-center px-6 py-8 overflow-y-auto">
 
-          {/* Mobile logo */}
-          <div className="mb-10 flex items-center gap-2 lg:hidden">
+          {/* Mobile logo — mt-auto pairs with mb-auto on the card to center the
+              group without clipping the top when the keyboard shrinks the viewport */}
+          <div className="mt-auto mb-10 flex items-center gap-2 lg:hidden">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
               <span className="text-sm font-bold text-black">G</span>
             </div>
@@ -199,7 +200,7 @@ export default function AuthPage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="w-full max-w-[400px]"
+            className="mb-auto w-full max-w-[400px] max-lg:mt-0 lg:my-auto"
           >
             {/* ── Role pill switcher ─────────────────────────────────────── */}
             <div className="relative mb-6 flex rounded-xl border border-white/[0.08] bg-white/[0.03] p-1">

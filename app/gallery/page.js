@@ -144,15 +144,16 @@ function PhotoCard({ photo, eventName, globalIdx, onOpen, onDownload }) {
         />
       </div>
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {/* Overlay — always subtly visible on touch, hover-reveal on desktop */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:from-black/60 lg:via-black/10 lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100" />
 
-      {/* Download button on hover */}
+      {/* Download button — visible on touch devices, hover-reveal on desktop */}
       <button
         onClick={(e) => { e.stopPropagation(); onDownload(photo.id, `${eventName}-photo.jpg`); }}
-        className="absolute bottom-3 right-3 flex h-8 w-8 translate-y-2 items-center justify-center rounded-full bg-white/90 text-zinc-900 opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-white"
+        aria-label="Download photo"
+        className="absolute bottom-2.5 right-2.5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-zinc-900 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white active:scale-95 lg:bottom-3 lg:right-3 lg:h-8 lg:w-8 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
       >
-        <Download className="h-3.5 w-3.5" />
+        <Download className="h-4 w-4 lg:h-3.5 lg:w-3.5" />
       </button>
     </motion.div>
   );
@@ -947,10 +948,11 @@ export default function GalleryPage() {
               </span>
             </div>
 
-            {/* Prev */}
+            {/* Prev — hidden on mobile, swipe navigates instead */}
             <button
               onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
-              className="absolute left-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/60 backdrop-blur-md transition hover:bg-white/15 hover:text-white"
+              aria-label="Previous photo"
+              className="absolute left-4 z-50 hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/60 backdrop-blur-md transition hover:bg-white/15 hover:text-white sm:flex"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -962,7 +964,7 @@ export default function GalleryPage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.15 }}
-              className="relative h-[84vh] w-[88vw] max-w-6xl"
+              className="relative h-[78svh] w-[94vw] max-w-6xl sm:h-[84vh] sm:w-[88vw]"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -975,16 +977,17 @@ export default function GalleryPage() {
               />
             </motion.div>
 
-            {/* Next */}
+            {/* Next — hidden on mobile, swipe navigates instead */}
             <button
               onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
-              className="absolute right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/60 backdrop-blur-md transition hover:bg-white/15 hover:text-white"
+              aria-label="Next photo"
+              className="absolute right-4 z-50 hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/60 backdrop-blur-md transition hover:bg-white/15 hover:text-white sm:flex"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
 
             {/* Bottom bar */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-6 pb-6 pt-10">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-10 sm:px-6 sm:pb-6">
               <div className="mx-auto flex max-w-4xl items-center justify-between">
                 <span className="text-sm text-white/50">
                   {lightboxIdx + 1} / {flatVisible.length}

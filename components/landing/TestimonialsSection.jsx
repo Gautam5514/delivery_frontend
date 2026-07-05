@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
   const secondRow = testimonials.slice(5, 10);
 
   return (
-    <section className="relative py-24 bg-slate-50 overflow-hidden">
+    <section className="relative py-16 sm:py-24 bg-slate-50 overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
           Wall of Love
         </motion.div>
 
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
           Loved by{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
             thousands
@@ -138,7 +138,7 @@ function InfiniteMarquee({ items, direction = "left", speed = 20 }) {
 
 function TestimonialCard({ data }) {
   return (
-    <div className="relative w-[350px] md:w-[400px] shrink-0 rounded-2xl bg-white p-6 shadow-sm border border-slate-200/60 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+    <div className="relative w-[300px] sm:w-[350px] md:w-[400px] shrink-0 rounded-2xl bg-white p-5 sm:p-6 shadow-sm border border-slate-200/60 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
       <Quote className="absolute top-6 right-6 text-slate-100 fill-slate-50 w-10 h-10" />
 
       <div className="flex gap-1 mb-4">

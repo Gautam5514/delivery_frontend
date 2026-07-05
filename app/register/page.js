@@ -129,7 +129,8 @@ function SelfiePanel({ image, imagePreview, isCameraActive, consentGiven, videoR
             </motion.div>
           ) : isCameraActive ? (
             <motion.div key="camera" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative h-full w-full bg-black">
-              <video ref={videoRef} autoPlay playsInline className="h-full w-full scale-x-[-1] object-cover" />
+              {/* muted is required for autoplay on iOS Safari — without it the preview stays black */}
+              <video ref={videoRef} autoPlay playsInline muted className="h-full w-full scale-x-[-1] object-cover" />
               <button
                 type="button" onClick={onClear}
                 aria-label="Close camera"
@@ -232,9 +233,12 @@ function RegisterPageInner() {
 
   const showError = (msg) => { setError(msg); toast.error(msg); };
 
+  // The camera <video> mounts only after AnimatePresence finishes the idle
+  // panel's exit animation (~300ms), so poll on a time budget — a fixed
+  // frame count expires too early on 90/120Hz mobile screens.
   const waitForVideoElement = () =>
     new Promise((resolve, reject) => {
-      let attempts = 0;
+      const deadline = Date.now() + 5000;
 
       const check = () => {
         if (videoRef.current) {
@@ -242,13 +246,12 @@ function RegisterPageInner() {
           return;
         }
 
-        attempts += 1;
-        if (attempts > 20) {
+        if (Date.now() > deadline) {
           reject(new Error("Camera view not ready"));
           return;
         }
 
-        requestAnimationFrame(check);
+        setTimeout(check, 50);
       };
 
       check();
@@ -289,7 +292,14 @@ function RegisterPageInner() {
       setIsCameraActive(true);
       const video = await waitForVideoElement();
       video.srcObject = stream;
-      await video.play();
+      try {
+        await video.play();
+      } catch (playErr) {
+        // Mobile autoplay policies can reject an explicit play() even though
+        // the stream is attached — the muted+autoPlay attributes let the
+        // browser start playback itself, so don't tear the camera down.
+        if (playErr.name !== "AbortError" && playErr.name !== "NotAllowedError") throw playErr;
+      }
       setError("");
     } catch (err) {
       if (streamRef.current) {
