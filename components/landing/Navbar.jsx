@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,35 @@ const mobileNavLinks = [
 export default function Navbar() {
   const [showOfferBanner, setShowOfferBanner] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+
+  // Smart header: hide while scrolling down, reveal on scroll up or near
+  // the top of the page
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const delta = y - lastY;
+        if (y < 80) {
+          setHeaderHidden(false);
+        } else if (delta > 6) {
+          setHeaderHidden(true);
+        } else if (delta < -6) {
+          setHeaderHidden(false);
+        }
+        lastY = y;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const offerText =
     "All-time 50% offer: Get 50% off on all plans and launch your event with premium QR photo delivery today.";
@@ -27,7 +56,11 @@ export default function Navbar() {
     <>
       {/* Sticky (not fixed) so the page content offset always matches the real
           header height — no hardcoded spacer that drifts across breakpoints */}
-      <header className="sticky inset-x-0 top-0 z-50 border-b border-zinc-200/80 bg-white/88 shadow-[0_12px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl">
+      <header
+        className={`sticky inset-x-0 top-0 z-50 border-b border-zinc-200/80 bg-white/88 shadow-[0_12px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl transition-transform duration-300 ease-out ${
+          headerHidden && !mobileMenuOpen ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         {/* ── Offer banner ── */}
         {showOfferBanner ? (
           <div className="border-b border-zinc-200 bg-zinc-950 text-white">

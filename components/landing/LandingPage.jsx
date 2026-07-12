@@ -11,6 +11,7 @@ const AdvancedShowcaseSection = dynamic(() => import("./AdvancedShowcaseSection"
 const WhyChooseUsSection = dynamic(() => import("./WhyChooseUsSection"));
 const HowItWorksSection = dynamic(() => import("./HowItWorksSection"));
 const TestimonialsSection = dynamic(() => import("./TestimonialsSection"));
+const GlobalNetworkSection = dynamic(() => import("./GlobalNetworkSection"));
 const FaqSection = dynamic(() => import("./FaqSection"));
 const FinalCtaSection = dynamic(() => import("./FinalCtaSection"));
 const PremiumFooter = dynamic(() => import("./PremiumFooter"));
@@ -36,6 +37,7 @@ export default function LandingPage() {
           <HowItWorksSection />
           {/* <FeaturesSection /> */}
           <TestimonialsSection />
+          <GlobalNetworkSection />
           <FaqSection />
           <FinalCtaSection />
         </main>
