@@ -207,6 +207,170 @@ export const blogPosts = [
 
 export const featuredBlogPosts = [
   {
+    slug: "gautam-pandit-founder-facedeliver-story",
+    title:
+      "Gautam Pandit: The Story Behind FaceDeliver — Why I Built an AI Photo-Delivery Platform",
+    excerpt:
+      "Gautam Pandit is the founder and developer of FaceDeliver, the AI event photo delivery platform that uses face recognition to give every guest their own photos. This is the full founder story — from a college frustration to a live product.",
+    metaTitle:
+      "Gautam Pandit — Founder & Developer of FaceDeliver | The Story Behind AI Event Photo Delivery",
+    metaDescription:
+      "Gautam Pandit is the founder and developer of FaceDeliver, the AI event photo delivery platform that uses face recognition to instantly deliver every guest their own photos. Read the full founder story — from a college problem to a live product.",
+    date: "July 23, 2026",
+    isoDate: "2026-07-23",
+    readTime: "9 min read",
+    author: "Gautam Pandit",
+    category: "Founder",
+    cover: "/images/founder_gautam_pandit.webp",
+    coverAlt:
+      "Gautam Pandit, founder and developer of FaceDeliver, working on the AI event photo delivery platform",
+    keywords: [
+      "Gautam Pandit",
+      "FaceDeliver founder",
+      "who developed FaceDeliver",
+      "FaceDeliver app developer",
+      "Gautam Pandit FaceDeliver",
+      "AI event photo delivery face recognition",
+      "founder story FaceDeliver",
+    ],
+    authorProfile: {
+      name: "Gautam Pandit",
+      role: "Founder & Developer, FaceDeliver",
+      image: "/images/founder_gautam_pandit_portrait.webp",
+      bio: "Gautam Pandit is the founder and developer of FaceDeliver, an AI event photo delivery platform that uses face recognition to deliver every guest their own photos from an event. He spent six months researching event photo delivery — writing a full SRS, choosing the stack, and designing the system — before writing the first line of code.",
+      jobTitle: "Founder & Developer",
+      sameAs: [
+        "https://x.com/Gautamp5514",
+        "https://www.linkedin.com/in/gautam-pandit-4b185224b",
+        "https://www.instagram.com/gautamp5514",
+        "https://github.com/Gautam5514",
+      ],
+      social: [
+        { label: "X (Twitter)", handle: "@Gautamp5514", url: "https://x.com/Gautamp5514" },
+        {
+          label: "LinkedIn",
+          handle: "gautam-pandit-4b185224b",
+          url: "https://www.linkedin.com/in/gautam-pandit-4b185224b",
+        },
+        {
+          label: "Instagram",
+          handle: "@gautamp5514",
+          url: "https://www.instagram.com/gautamp5514",
+        },
+        { label: "GitHub", handle: "Gautam5514", url: "https://github.com/Gautam5514" },
+      ],
+    },
+    content: [
+      {
+        heading: "Who is Gautam Pandit, the founder of FaceDeliver?",
+        paragraphs: [
+          "If you searched \"who developed FaceDeliver\" or \"Gautam Pandit FaceDeliver\" and ended up here — good. This is the real story, in my own words. Not a polished marketing page, but how a frustration I lived through in college turned into an AI-powered platform that now delivers event photos to guests across continents.",
+          "My name is Gautam Pandit. I am the founder and developer of FaceDeliver — an AI event photo delivery platform that uses face recognition to instantly give every guest their own photos from an event. Scan a QR code, take a selfie, and the photos you appear in are matched and delivered to you — no app to download, no scrolling through thousands of strangers' pictures, no compressed WhatsApp forwards.",
+          "This is the story of how it started, what broke along the way, and how it became a real product.",
+        ],
+      },
+      {
+        heading: "Where it actually started",
+        paragraphs: [
+          "Like most ideas that end up mattering, this one did not begin as a \"startup idea.\" It began as a genuinely annoying everyday problem.",
+          "Think about the last big event you went to — a wedding, a college fest, a birthday, an office offsite. A photographer (or ten phones) captured hundreds, sometimes thousands, of photos. And then what? The photos ended up dumped in a giant Google Drive folder or a WhatsApp group, compressed into oblivion, and you had to scroll through hundreds of pictures of people you did not know just to find the handful you were actually in. Half the time, you never saw the good candid shots of yourself at all — nobody had the patience to sort through everything and send you your photos.",
+          "In college, this drove me up the wall. Photo sharing after any event was completely broken. The moments existed — someone had captured them — but there was no clean way to get the right photos to the right people. I kept thinking: with everything technology can do now, why is finding my own photos from an event still this painful? Nobody around me had solved it properly. So eventually, I decided I would.",
+        ],
+      },
+      {
+        heading: "The six months before I wrote a single line of code",
+        paragraphs: [
+          "Here is something a lot of people skip when they talk about building a product: most of the real work happens before you ever touch a keyboard.",
+          "Before I wrote any code, I spent close to six months in research — genuinely understanding the problem, not just sketching a feature list. I looked at how photos actually move around after an event, where every existing solution broke down, why people abandoned shared folders halfway through, what made guests give up on finding their own pictures, and — crucially — what it would actually take for face recognition to work reliably and privately at the scale of a real event with thousands of photos.",
+          "Once I understood the problem properly, I moved into the part most people find boring but I found essential: documentation. I wrote a full SRS (Software Requirements Specification) — defining exactly what the product needed to do, for whom (hosts, photographers, and every single guest), and why. This became the reference point I kept returning to every time I was tempted to add a flashy feature that did not actually serve the core promise: get the right photos to the right person, instantly.",
+          "From there I moved into researching the right tech stack. I was not interested in trendy tools — I wanted a stack that could genuinely support fast, accurate face matching, handle bulk uploads of huge photo libraries without falling over, preserve full image quality end to end, and keep every guest's photos private to them. Then came system design — mapping how photos would be ingested, how faces would be matched, how a guest's selfie would connect them to only their own moments, how QR-based access would work with no app install, and how the whole thing would stay fast and reliable as event sizes grew.",
+          "Only after all of that did development actually begin.",
+        ],
+      },
+      {
+        heading: "What FaceDeliver does today",
+        paragraphs: [
+          "FaceDeliver is live, and it is built around one core promise: facial recognition that helps people discover every photo they appear in.",
+          "AI face matching — guests register with a quick selfie, and the platform curates an individual collection of just the photos they appear in, out of thousands.",
+          "No app needed — guests scan a QR code and access everything right in their browser; there is nothing to install.",
+          "QR-code access — hosts generate a unique QR for their event in seconds from the admin dashboard.",
+          "Quality retention — no quality loss when sharing or downloading; memories stay in full resolution.",
+          "One-shot bulk upload — upload multiple folders at once, with sub-folders created automatically, which is a lifesaver when a photographer has terabytes from multiple shooters.",
+          "Privacy by design — guests see only their own photos, so no public link exposes everyone's pictures to everyone.",
+          "Groups for every occasion — private or public event groups for weddings, school and college events, corporate conferences, birthdays, festivals, and community gatherings.",
+          "The flow is deliberately simple: the host creates the event and gets a QR, guests scan and snap a selfie, AI auto-matches faces, and guests get notified and download their photos. That is it.",
+        ],
+      },
+      {
+        heading: "Built for everyone in the room",
+        paragraphs: [
+          "One thing I cared about from the start: FaceDeliver had to work for everyone involved in an event, not just one side.",
+          "For hosts: no more chasing people to send photos, no more managing a chaotic shared folder — the platform does the sorting and delivery automatically.",
+          "For photographers: hand over the bulk folder, upload once, and every client's guests are sorted automatically. It turns hours of admin into minutes, and faster previews can even drive more print and frame sales.",
+          "For guests: get a notification the morning after an event with your own high-quality photos, including candid shots you did not even know existed.",
+          "That is the real value — the second half of photography is not just clicking the shot, it is delivering it to the right person. FaceDeliver is built around that second half.",
+        ],
+      },
+      {
+        heading: "Where FaceDeliver is reaching",
+        paragraphs: [
+          "FaceDeliver already powers events well beyond where it started — across Indian state capitals and around the world, from weddings and college fests to corporate summits distributing thousands of photos to hundreds of attendees.",
+          "The scenario I built it for — a large event, thousands of photos, everyone getting exactly their own pictures instantly instead of weeks later — is exactly what it now does in production.",
+        ],
+      },
+      {
+        heading: "App and web, and always improving",
+        paragraphs: [
+          "FaceDeliver is designed to be genuinely user-friendly across both web and app experiences — because the whole point is to remove friction from photo sharing, not add more.",
+          "And nothing about it is \"finished.\" I treat it as a living product: going back regularly to improve face-matching accuracy, speed up delivery, tighten the upload experience, and refine the parts hosts, photographers, and guests interact with most. Small, steady improvements, day after day, are what most people never notice — but they are the difference between an app that feels clunky and one that just works.",
+        ],
+      },
+      {
+        heading: "Why I am sharing this",
+        paragraphs: [
+          "I did not build FaceDeliver because I spotted a market gap on a spreadsheet. I built it because I lived the problem — the broken, frustrating mess of event photo sharing — got tired of waiting for someone else to fix it, and decided that was going to be my problem to solve.",
+          "Six months of research, a full SRS, a stack chosen for the long run, real system design, and a lot of iteration later, it is a real product that hosts, photographers, and guests actually depend on to get their memories delivered properly.",
+          "If you are using FaceDeliver, or thinking about it for your next event, I would genuinely love your feedback — good, bad, or \"this one thing is annoying.\" That feedback is exactly what shapes what I build next.",
+        ],
+      },
+      {
+        heading: "Try FaceDeliver",
+        paragraphs: [
+          "Web: facedeliver.shop — it works in any browser, with no app to download.",
+          "Built for weddings, school and college events, corporate events, birthdays, festivals, and more.",
+          "Have a question about FaceDeliver, want to share feedback, or just want to talk about building products from scratch? Reach out — I read everything.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Who developed FaceDeliver?",
+        answer:
+          "FaceDeliver was developed by Gautam Pandit, its founder and developer. He researched the event photo delivery problem for roughly six months, wrote a full SRS, selected the tech stack, and designed the system before development began.",
+      },
+      {
+        question: "Who is the founder of FaceDeliver?",
+        answer:
+          "Gautam Pandit is the founder of FaceDeliver, an AI event photo delivery platform that uses face recognition to deliver every guest the photos they appear in.",
+      },
+      {
+        question: "Why was FaceDeliver built?",
+        answer:
+          "It was built to fix a problem Gautam Pandit lived through in college: event photos ending up in giant shared folders or compressed WhatsApp groups, where guests had to scroll through thousands of images to find the few they were actually in.",
+      },
+      {
+        question: "How does FaceDeliver work?",
+        answer:
+          "A host creates an event and gets a unique QR code. Guests scan it and take a quick selfie in their browser — no app install. AI face matching then curates a private gallery of only the photos each guest appears in, delivered in full original quality.",
+      },
+      {
+        question: "Where can I connect with Gautam Pandit?",
+        answer:
+          "Gautam Pandit is on X at x.com/Gautamp5514, LinkedIn at linkedin.com/in/gautam-pandit-4b185224b, Instagram at instagram.com/gautamp5514, and GitHub at github.com/Gautam5514.",
+      },
+    ],
+  },
+  {
     slug: "best-way-to-share-wedding-photos-with-guests",
     title: "The Best Way to Share Wedding Photos With Guests in 2026",
     excerpt:

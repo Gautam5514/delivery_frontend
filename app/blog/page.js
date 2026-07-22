@@ -91,7 +91,7 @@ export default function BlogPage() {
             >
               <img
                 src={heroPost.cover}
-                alt={heroPost.title}
+                alt={heroPost.coverAlt || heroPost.title}
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/25 to-transparent" />
@@ -128,7 +128,7 @@ export default function BlogPage() {
                 >
                   <img
                     src={post.cover}
-                    alt={post.title}
+                    alt={post.coverAlt || post.title}
                     className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
@@ -190,7 +190,7 @@ export default function BlogPage() {
                   <div className="relative h-52 overflow-hidden bg-zinc-100">
                     <img
                       src={post.cover}
-                      alt={post.title}
+                      alt={post.coverAlt || post.title}
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />

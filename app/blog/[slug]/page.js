@@ -17,10 +17,14 @@ export async function generateMetadata({ params }) {
   const post = allBlogPosts.find((item) => item.slug === slug);
   if (!post) return { title: "Blog Not Found" };
   return buildMetadata({
-    title: post.title,
-    description: post.excerpt,
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || post.excerpt,
     path: `/blog/${post.slug}`,
     image: post.cover,
+    keywords: post.keywords,
+    type: "article",
+    publishedTime: post.isoDate,
+    authors: post.author ? [post.author] : undefined,
   });
 }
 
@@ -50,7 +54,11 @@ const categoryColors = {
   Schools: "bg-sky-50 text-sky-700 border-sky-100",
   Corporate: "bg-slate-50 text-slate-700 border-slate-100",
   College: "bg-amber-50 text-amber-700 border-amber-100",
+  Founder: "bg-zinc-100 text-zinc-800 border-zinc-200",
 };
+
+const absoluteUrl = (src) =>
+  !src ? undefined : src.startsWith("http") ? src : `${SITE_URL}${src}`;
 
 export default async function BlogDetailPage({ params }) {
   const { slug } = await params;
@@ -64,32 +72,81 @@ export default async function BlogDetailPage({ params }) {
   const catClass =
     categoryColors[post.category] ?? "bg-zinc-100 text-zinc-700 border-zinc-200";
 
+  const profile = post.authorProfile;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+
+  const authorNode = profile
+    ? {
+        "@type": "Person",
+        "@id": `${postUrl}#author`,
+        name: profile.name,
+        jobTitle: profile.jobTitle,
+        description: profile.bio,
+        image: absoluteUrl(profile.image),
+        url: profile.url || postUrl,
+        sameAs: profile.sameAs,
+        worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      }
+    : { "@type": "Organization", name: post.author || SITE_NAME };
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.excerpt,
-    image: post.cover
-      ? post.cover.startsWith("http")
-        ? post.cover
-        : `${SITE_URL}${post.cover}`
-      : undefined,
-    datePublished: post.date,
-    author: { "@type": "Organization", name: post.author || SITE_NAME },
+    description: post.metaDescription || post.excerpt,
+    image: absoluteUrl(post.cover),
+    datePublished: post.isoDate || post.date,
+    dateModified: post.isoDate || post.date,
+    keywords: post.keywords?.join(", "),
+    author: authorNode,
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
+      url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.webp` },
     },
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: postUrl,
   };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
+  const faqJsonLd = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
+
+  const personJsonLd = profile
+    ? { "@context": "https://schema.org", ...authorNode }
+    : null;
+
+  const schemas = [articleJsonLd, breadcrumbJsonLd, faqJsonLd, personJsonLd].filter(
+    Boolean
+  );
 
   return (
     <div className="min-h-screen bg-white text-zinc-900">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Navbar />
 
       {/* Reading progress bar — client only */}
@@ -102,7 +159,7 @@ export default async function BlogDetailPage({ params }) {
           <div className="relative min-h-[500px] bg-zinc-900">
             <img
               src={post.cover}
-              alt={post.title}
+              alt={post.coverAlt || post.title}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/94 via-black/40 to-black/10" />
@@ -148,14 +205,24 @@ export default async function BlogDetailPage({ params }) {
             {/* Author row */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 pb-7">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-950 text-xs font-bold text-white">
-                  {getInitials(post.author)}
-                </div>
+                {profile?.image ? (
+                  <img
+                    src={profile.image}
+                    alt={profile.name}
+                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-zinc-200"
+                  />
+                ) : (
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-950 text-xs font-bold text-white">
+                    {getInitials(post.author)}
+                  </div>
+                )}
                 <div>
                   <p className="text-sm font-semibold text-zinc-900">
                     {post.author}
                   </p>
-                  <p className="text-xs text-zinc-400">FaceDeliver Team</p>
+                  <p className="text-xs text-zinc-400">
+                    {profile?.role ?? "FaceDeliver Team"}
+                  </p>
                 </div>
               </div>
 
@@ -201,13 +268,43 @@ export default async function BlogDetailPage({ params }) {
               ))}
             </div>
 
+            {/* FAQ */}
+            {post.faqs?.length > 0 && (
+              <div className="mt-14 border-t border-zinc-100 pt-10">
+                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                  Frequently asked questions
+                </h2>
+                <div className="mt-6 space-y-3">
+                  {post.faqs.map((faq) => (
+                    <details
+                      key={faq.question}
+                      className="group rounded-xl border border-zinc-200 bg-zinc-50/60 px-5 py-4 transition open:bg-white open:shadow-sm"
+                    >
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-zinc-900 [&::-webkit-details-marker]:hidden">
+                        {faq.question}
+                        <span className="inline-block shrink-0 text-xl font-normal leading-none text-zinc-400 transition group-open:rotate-45">
+                          +
+                        </span>
+                      </summary>
+                      <p className="mt-3 text-[15px] leading-7 text-zinc-600">
+                        {faq.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Tags */}
             <div className="mt-12 border-t border-zinc-100 pt-8">
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">
                 Tagged
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {[post.category, "FaceDeliver", "Event Photography"].map((tag) => (
+                {(post.keywords?.length
+                  ? post.keywords
+                  : [post.category, "FaceDeliver", "Event Photography"]
+                ).map((tag) => (
                   <span
                     key={tag}
                     className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-xs font-medium text-zinc-600"
@@ -219,18 +316,47 @@ export default async function BlogDetailPage({ params }) {
             </div>
 
             {/* Author card */}
-            <div className="mt-8 flex items-start gap-5 rounded-xl border border-zinc-100 bg-zinc-50 p-6">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-zinc-950 text-base font-bold text-white">
-                {getInitials(post.author)}
-              </div>
-              <div>
+            <div className="mt-8 flex flex-col items-start gap-5 rounded-xl border border-zinc-100 bg-zinc-50 p-6 sm:flex-row">
+              {profile?.image ? (
+                <img
+                  src={profile.image}
+                  alt={profile.name}
+                  className="h-20 w-20 shrink-0 rounded-full object-cover ring-1 ring-zinc-200"
+                />
+              ) : (
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-zinc-950 text-base font-bold text-white">
+                  {getInitials(post.author)}
+                </div>
+              )}
+              <div className="min-w-0">
                 <p className="text-sm font-semibold text-zinc-900">
                   Written by {post.author}
                 </p>
-                <p className="mt-1 text-sm leading-6 text-zinc-500">
-                  Part of the FaceDeliver team, crafting guides on AI event photo
-                  delivery, workflows, and guest experience.
+                {profile?.role && (
+                  <p className="mt-0.5 text-xs font-medium uppercase tracking-[0.14em] text-zinc-400">
+                    {profile.role}
+                  </p>
+                )}
+                <p className="mt-2 text-sm leading-6 text-zinc-500">
+                  {profile?.bio ??
+                    "Part of the FaceDeliver team, crafting guides on AI event photo delivery, workflows, and guest experience."}
                 </p>
+
+                {profile?.social?.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {profile.social.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="me noopener noreferrer"
+                        className="rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-600 transition hover:border-zinc-300 hover:text-zinc-900"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 

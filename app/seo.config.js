@@ -31,20 +31,37 @@ export const canonical = (path = "/") =>
   `${SITE_URL}${path === "/" ? "" : path}`;
 
 // Helper to build a complete metadata object for a page.
-export function buildMetadata({ title, description, path = "/", image }) {
+export function buildMetadata({
+  title,
+  description,
+  path = "/",
+  image,
+  keywords,
+  type = "website",
+  publishedTime,
+  authors,
+}) {
   const url = canonical(path);
   const img = image || OG_IMAGE;
   return {
     title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
+    ...(authors?.length ? { authors: authors.map((name) => ({ name })) } : {}),
     alternates: { canonical: url },
     openGraph: {
-      type: "website",
+      type,
       url,
       siteName: SITE_NAME,
       title,
       description,
       images: [{ url: img }],
+      ...(type === "article"
+        ? {
+            ...(publishedTime ? { publishedTime } : {}),
+            ...(authors?.length ? { authors } : {}),
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
