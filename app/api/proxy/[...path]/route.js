@@ -11,6 +11,7 @@ const HOP_BY_HOP = new Set([
   "connection", "keep-alive", "proxy-authenticate", "proxy-authorization",
   "te", "trailers", "transfer-encoding", "upgrade",
   "host",
+  "content-encoding", "content-length",
 ]);
 
 async function proxy(request, context) {
