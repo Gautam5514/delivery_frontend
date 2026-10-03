@@ -11,6 +11,13 @@ const HOP_BY_HOP = new Set([
   "connection", "keep-alive", "proxy-authenticate", "proxy-authorization",
   "te", "trailers", "transfer-encoding", "upgrade",
   "host",
+  // fetch() transparently decompresses the backend response body before we
+  // ever see it, but the original Content-Encoding/Content-Length headers
+  // stay on backendRes.headers. Forwarding them alongside the now-decoded
+  // body makes the browser try to gunzip plain text and fail with a hard
+  // network error ("Failed to fetch") even though the backend answered 200.
+  // Dropping them lets the runtime recompute correct framing for what we
+  // actually send.
   "content-encoding", "content-length",
 ]);
 
