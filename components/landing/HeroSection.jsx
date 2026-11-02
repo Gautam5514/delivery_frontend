@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import ArcGalleryHero from "@/components/ui/arc-gallery-hero";
-import NeuralBackground from "@/components/ui/flow-field-background";
+import TiltedGridHero from "@/components/ui/tilted-grid-hero";
 
-const arcImages = [
+const images = [
   "/images/hero_wedding.webp",
   "/images/card_birthday.webp",
   "/images/feat_camera_pro.webp",
@@ -17,55 +16,48 @@ const arcImages = [
   "/images/feat_selfie.webp",
   "/images/hero_college.webp",
   "/images/card_corporate.webp",
-];
+].map((src) => ({ src, alt: "" }));
 
 export default function HeroSection() {
   return (
-    <ArcGalleryHero
-      images={arcImages}
-      background={
-        <NeuralBackground
-          className="h-full w-full"
-          color="#818cf8"
-          backgroundColor="#09090b"
-          trailOpacity={0.1}
-          particleCount={500}
-          speed={0.8}
-        />
-      }
+    <TiltedGridHero
+      images={images}
+      axis={60}
+      speed={6}
+      tileHeight={30}
+      className="min-h-[680px] h-[calc(100vh-4rem)] w-full bg-[#09090b]"
     >
-      <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-        AI Event Photo Delivery with Face Recognition
+      <div className="relative z-10 flex h-full flex-col items-center justify-between px-6 pb-12 pt-10 text-center sm:pt-12">
+        <div>
+      <h1 className="mx-auto max-w-5xl text-balance text-3xl font-medium leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Every Guest. Every Photo.{" "}
+        <span className="text-zinc-500">Delivered in Seconds.</span>
       </h1>
 
-      <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
-        FaceDeliver instantly delivers every guest their own photos using AI
-        face matching. High-end galleries, QR-code access, and precise photo
-        delivery in one polished platform.
+      <p className="mx-auto mt-5 max-w-3xl text-balance text-sm leading-6 text-zinc-400 sm:text-base">
+        FaceDeliver uses AI face recognition to hand every guest their own event
+        photos instantly, with a single QR scan.
       </p>
+        </div>
 
-      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        <div>
+      <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
         <Link
           href="/register"
-          className="inline-flex w-full items-center justify-center rounded-xl border border-white bg-white px-7 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-900 shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:bg-zinc-200 hover:shadow-xl sm:w-auto"
+          className="inline-flex w-full items-center justify-center rounded-full border border-white bg-white px-6 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-zinc-900 shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:bg-zinc-200 hover:shadow-xl sm:w-auto"
         >
           Start as Guest
         </Link>
         <Link
           href="/admin"
-          className="inline-flex w-full items-center justify-center rounded-xl border border-white/30 bg-white/5 px-7 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15 sm:w-auto"
+          className="inline-flex w-full items-center justify-center rounded-full border border-white/25 bg-white/5 px-6 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15 sm:w-auto"
         >
           Create Event
         </Link>
       </div>
 
-      <div className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.2em] text-zinc-400 sm:gap-5 sm:text-xs">
-        <span>Premium Visual Theme</span>
-        <span className="h-1 w-1 rounded-full bg-zinc-500/70" />
-        <span>Event-Ready Experience</span>
-        <span className="h-1 w-1 rounded-full bg-zinc-500/70" />
-        <span>AI Face Matching</span>
+        </div>
       </div>
-    </ArcGalleryHero>
+    </TiltedGridHero>
   );
 }

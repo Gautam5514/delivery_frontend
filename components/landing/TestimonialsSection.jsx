@@ -119,19 +119,26 @@ export default function TestimonialsSection() {
 }
 
 function InfiniteMarquee({ items, direction = "left", speed = 20 }) {
+  // Two identical halves; the track slides exactly one half, so the loop is
+  // seamless. Hovering the row pauses it (see .marquee in globals.css).
+  const half = [...items, ...items];
   return (
-    <div className="relative flex overflow-hidden group">
-      <motion.div
-        className="flex gap-6 shrink-0 px-3"
-        initial={{ x: direction === "left" ? 0 : "-100%" }}
-        animate={{ x: direction === "left" ? "-100%" : 0 }}
-        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-        style={{ width: "max-content" }}
+    <div className="marquee relative flex overflow-hidden">
+      <div
+        className="marquee-track flex w-max"
+        style={{
+          "--marquee-duration": `${speed}s`,
+          animationDirection: direction === "left" ? "normal" : "reverse",
+        }}
       >
-        {[...items, ...items, ...items].map((item, idx) => (
-          <TestimonialCard key={`${item.name}-${idx}`} data={item} />
+        {[0, 1].map((copy) => (
+          <div key={copy} className="flex shrink-0 gap-6 pr-6" aria-hidden={copy === 1}>
+            {half.map((item, idx) => (
+              <TestimonialCard key={`${item.name}-${idx}`} data={item} />
+            ))}
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
